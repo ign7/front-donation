@@ -20,16 +20,14 @@
 }
 
 .formCadastro {
-     display: flex;
-    flex-direction: column; 
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #fff;
     border-radius: 7px;
     padding: 40px;
     box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
-    gap: 5px;
-    max-width: 70%;
-    height: 100vh;
+    gap: 5px
 }
 
 .areaCadastro img {
@@ -51,18 +49,31 @@
 }
 
 .container-inputs{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    
+   
 }
 
 .formCadastro input {
-    padding: 15px;
+    padding: 12px;
     font-size: 14px;
     border: 1px solid #ccc;
     margin-bottom: 20px;
     margin-top: 5px;
     border-radius: 4px;
     transition: all linear 160ms;
-    outline: none;
+    outline: none;   
 }
+
+.check-universal{
+    display: flex;
+    flex-direction: row; 
+}
+
+.doador-check{
+    padding-right:8px;
+}
+
+.btn-save{
+    background-color: #0ca852;
+    color: #fff;
+}
+

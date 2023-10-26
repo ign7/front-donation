@@ -14,7 +14,6 @@ function Login() {
                 <input type="password" placeholder="Digite seu e-mail" />
                 <a href="/">Esqueci minha senha</a>
                 <input type="submit" value="Acessar" class="btn" />
-                <input type="submit" value="Cadastre-se" class="btn" />
             </form>
         </div>            
     </div>
