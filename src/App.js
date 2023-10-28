@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Login from './components/login/Login';
+import Home from './components/home/Home';
 import Cadastro from './components/user/Cadastro';
 import { BrowserRouter as Router, Routes, Route,Link } from 'react-router-dom';
 import logoimg from './img/LogoDonation.jpeg'
@@ -11,7 +12,6 @@ import logoimg from './img/LogoDonation.jpeg'
 function App() {
   return (
     <div className="App">
-      {/* <Header/>  */}
       <Router>
         <div className='title'>
           <header>
@@ -37,6 +37,7 @@ function App() {
         <Routes>
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home/>} />
         </Routes>
       </Router>
 
