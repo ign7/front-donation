@@ -3,3 +3,22 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 /* Adicione suas próprias regras de estilo abaixo das importações do Tailwind CSS */
+*{
+    font-family: 'Open Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+  
+.title{
+    border: 1px solid ;
+    border-radius:  1px solid;
+}
+
+
+.logo-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;   
+}
+
+

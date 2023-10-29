@@ -22,9 +22,9 @@ function handle(user){
 function login() {
   axios.post('http://localhost:8080/usuarios/login',loginstate).then(token=>{
   console.log(token.data.token);
-  alert('Bem-vindo ao sistema');
   navigate('/home');
 }).catch(error=>{
+  console.log(error);
   alert('deu ruim');
 })
 

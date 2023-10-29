@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.homepage {
+    width: 100%;
+    height: 100vh;
+    background-color: #0ca852;
+}
+
+.nav-bar-home{
+    border-radius: 4px;
+    background-color: #f7f7f7fb;
+    width: 15%;
+    height: 100%;
+}
+.atividades{
+    font-size: large;
+    font-style: oblique;
+    padding: 0.5rem;
+}
+
+#container-nav-actions{
+    padding: 0.025rem;
+}
+
+.label-navs{
+    padding: 0.15rem;
+}
+.label-navs > li{
+    display: flex;
+    flex-direction: row;
+}
+
+.label-navs > li > a{
+    padding-left: 4px;
+}
+
+.homepage{
+    display: flex;
+    flex-direction: row;
+}
+.educ{
+    color: #fff;
+    font-size: 2.5rem;    
+}
+.titulo-homepage{
+    border: 1px solid #fff;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.body-home{
+    width: 100%;
+}
+
+.descricao{
+    
+}
+
+
+
+

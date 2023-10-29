@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Routes, Route,Link } from 'react-router-dom';
 import logoimg from './img/LogoDonation.jpeg'
 
 
-
 function App() {
   return (
     <div className="App">
@@ -17,9 +16,8 @@ function App() {
           <header>
             <div className='logo-title' >
               <img className='logo' src={logoimg} alt="" />
-              <h1>Donation System</h1>
+              <h1>EDUC. SUSTENTAVEL SYSTEM</h1>
             </div>
-
             <nav>
               <ul>
                 <li>HOME</li>
@@ -31,8 +29,8 @@ function App() {
                   <Link to="/cadastro">CADASTRO</Link>
                 </li>
               </ul>
-            </nav>
-          </header>
+            </nav>           
+          </header>         
         </div>
         <Routes>
           <Route path="/cadastro" element={<Cadastro />} />
@@ -40,10 +38,6 @@ function App() {
           <Route path="/home" element={<Home/>} />
         </Routes>
       </Router>
-
-
-
-
       <Footer />
     </div>
   );
