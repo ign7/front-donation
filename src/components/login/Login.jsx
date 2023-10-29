@@ -40,7 +40,7 @@ function login() {
                 <label for="login">Login</label>
                 <input type="text"  name="login" value={loginstate.login} onChange={handle} placeholder="Digite seu e-mail" autofocus="true" />
                 <label for="password">Senha</label>
-                <input type="text" name="password" value={loginstate.password} onChange={handle} placeholder="Digite seu e-mail" />
+                <input type="password" name="password" value={loginstate.password} onChange={handle} placeholder="Digite seu e-mail" />
                 <a href="">Esqueci minha senha</a>
                 <input type='button' onClick={login} value="Acessar" class="btn" />
             </form>

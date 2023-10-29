@@ -63,14 +63,14 @@ function Home() {
         <div className="Home">
             <div class="homepage">
                 <div className='nav-bar-home'>
-                    <div class="flex h-screen bg-gray-200">
+                    <div class="">
                         <div className='atividades'>
                             <h1>Atividades do Sistema</h1>
                             <hr />
-                            <h1 class="text-2xl font-semibold mb-4">Açoes </h1>
+                            <h1 class="">Açoes </h1>
                             <hr />
                         </div>
-                        <div class="w-64 bg-gray-800 text-white p-6" id='container-nav-actions'>
+                        <div class="" id='container-nav-actions'>
                             <ul>
                                 <div className='label-navs'>
                                     <li class="mb-2">
@@ -190,10 +190,10 @@ function Home() {
                             </div>
                         </div>
 
-                        
-                        <div className='container-conteudo'>   
-                        {listadonation.map((donation) => (                         
-                                <div key={donation.id} className="card-donation">
+                        <div className='container-conteudo'>
+
+                            {listadonation.map((donation) => (
+                                <div key={donation.id}  className="card-donation">
                                     <img className="" src={logoimg} alt="Imagem do Card" />
                                     <div className="">
                                         <hr />
@@ -203,13 +203,13 @@ function Home() {
                                         </div>
                                         <div className='conteudo'>
                                             <p className="date-card">
-                                                Postada Em:{donation.dataDoacao}.
+                                                Postada: {donation.dataDoacao}.
                                             </p>
                                             <p className="date-card">
-                                                status:{donation.status}
+                                                Situação: {donation.status}
                                             </p>
                                             <p className="date-card">
-                                                Categoria:{donation.categoria}
+                                                Categoria: {donation.categoria}
                                             </p>
                                         </div>
                                     </div>
@@ -225,9 +225,8 @@ function Home() {
                                         </button>
                                     </div>
                                 </div>
-                             ))};                            
+                            ))};
                         </div>
-                       
                     </div>
                 </div>
             </div>

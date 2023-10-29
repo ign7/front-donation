@@ -4,9 +4,10 @@
 @import 'tailwindcss/utilities';
 /* Adicione suas próprias regras de estilo abaixo das importações do Tailwind CSS */
 *{
-    font-family: 'Open Sans', sans-serif;
-  font-family: 'Poppins', sans-serif;
-  font-family: 'Roboto', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif;
 }
   
 .title{

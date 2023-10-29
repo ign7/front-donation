@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+*{
+    font-style: 'roboto';
+}
 .homepage {
     width: 100%;
     height: 100vh;
@@ -138,7 +141,17 @@
     width: 18%;
     border-radius:  5px;
     background-color: #fff;  
+    border: 1px solid #ccc;
+     transition: all 0.3s ease; 
 }
+
+.card-donation:hover {
+    background-color: #f5f5f5c0; /* Cor de fundo quando o mouse está sobre o card */
+    border-color: #999; /* Cor da borda quando o mouse está sobre o card */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Sombra quando o mouse está sobre o card */
+}
+
+
 .conteudo{
     padding: 4px;
 }
@@ -155,3 +168,14 @@
 }
 
 
+.dropdown-item{
+    background-color: #fff;  
+    border: 1px solid #fff;
+    transition: all 0.3s ease; 
+}
+
+.dropdown-item:hover{
+    background-color: #ffffffd3; /* Cor de fundo quando o mouse está sobre o card */
+    border-color: #fff; /* Cor da borda quando o mouse está sobre o card */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Sombra quando o mouse está sobre o card */
+}
