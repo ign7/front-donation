@@ -133,7 +133,25 @@
 
 
 
-
-
+.card-donation{
+    padding: 16px;
+    width: 18%;
+    border-radius:  5px;
+    background-color: #fff;  
+}
+.conteudo{
+    padding: 4px;
+}
+.container-conteudo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 24px;
+}
+.btn-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 
