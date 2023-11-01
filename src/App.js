@@ -4,6 +4,7 @@ import Footer from './components/footer/Footer';
 import Login from './components/login/Login';
 import Home from './components/home/Home';
 import Cadastro from './components/user/Cadastro';
+import CadastrarDonation from './components/donation/CadastrarDonation';
 import { BrowserRouter as Router, Routes, Route,Link } from 'react-router-dom';
 import logoimg from './img/LogoDonation.jpeg'
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home/>} />
+          <Route path="/cadastrarDoacao" element={<CadastrarDonation/>}/>
         </Routes>
       </Router>
       <Footer />
