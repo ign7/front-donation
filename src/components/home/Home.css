@@ -73,10 +73,15 @@
 
 .barrapesquisa {
     padding: 0.6rem;
-    padding-right: 1.0rem;
+    padding-right: 1.5rem;
     border-radius:  4px;
     height: 50%;
 }
+.divbarra{
+    display: flex;
+    flex-direction: row;
+}
+
 
 .descricao{
     color: #fff;
@@ -100,7 +105,7 @@
     justify-content: center; 
     font-size: medium;
     color:black;
-    width: 15%;
+    width: 20%;
     background-color: #fff;
     border-radius: 4px;
 }
