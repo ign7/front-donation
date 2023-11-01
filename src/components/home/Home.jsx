@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route,Link } from 'react-router-dom';
 import axios from 'axios';
 import logoimg from '../../img/LogoDonation.jpeg'
 import './Home.css';
@@ -75,11 +76,11 @@ function Home() {
                                 <div className='label-navs'>
                                     <li class="mb-2">
                                         <p>Cadastrar Doaçoes</p>
-                                        <a href="#" class="hover:text-gray-300">
+                                        <Link to="/cadastrarDoacao">
                                             <span class="material-symbols-outlined">
                                                 app_registration
                                             </span>
-                                        </a>
+                                        </Link>                                 
                                     </li>
                                 </div>
 
