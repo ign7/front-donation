@@ -146,10 +146,10 @@ function Home() {
                         </div>
 
                         <div className='barrapesquisa'>
-                            <div class="flex mb-4">
-                                <input type="text" id="search-input" placeholder="Pesquisar..."
-                                    class="rounded-l-md p-2 border-t border-b border-l text-gray-800 border-gray-300 bg-white focus:outline-none focus:border-blue-500" />
-                                <button id='btn-pesquisa' class="rounded-r-md bg-blue-500 text-white p-2 border border-blue-500 border-t border-b border-r cursor-pointer hover:bg-blue-700 focus:outline-none focus:border-blue-700">
+                            <div class="divbarra">
+                                <input type="text" id="search-input" placeholder="Pesquisar..." class="" />
+                                   
+                                <button id='btn-pesquisa' class="">
                                     <span class="material-symbols-outlined">
                                         search
                                     </span>
