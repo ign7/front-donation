@@ -21,7 +21,7 @@ function App() {
             </div>
             <nav>
               <ul>
-                <li>HOME</li>
+              <Link to="/home">HOME</Link>
                 <li>SOBRE</li>
                 <li>
                   <Link to="/">LOGIN</Link>

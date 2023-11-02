@@ -148,12 +148,14 @@
     background-color: #fff;  
     border: 1px solid #ccc;
      transition: all 0.3s ease; 
+     margin-bottom: 48px; 
+    margin-right: 24px;
 }
 
 .card-donation:hover {
-    background-color: #f5f5f5c0; /* Cor de fundo quando o mouse está sobre o card */
-    border-color: #999; /* Cor da borda quando o mouse está sobre o card */
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Sombra quando o mouse está sobre o card */
+    background-color: #f5f5f5c0; 
+    border-color: #999; 
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); 
 }
 
 
@@ -162,8 +164,8 @@
 }
 .container-conteudo{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: row;  
+    flex-wrap: wrap;  
     padding: 24px;
 }
 .btn-info{
