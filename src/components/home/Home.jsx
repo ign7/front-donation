@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route,Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import logoimg from '../../img/LogoDonation.jpeg'
 import './Home.css';
+
+import '../../../src/index.css'
+
 
 
 
@@ -80,7 +83,7 @@ function Home() {
                                             <span class="material-symbols-outlined">
                                                 app_registration
                                             </span>
-                                        </Link>                                 
+                                        </Link>
                                     </li>
                                 </div>
 
@@ -137,10 +140,10 @@ function Home() {
                 <div className='body-home'>
                     <div className='titulo-homepage'>
                         <div>
-                            <h1 className='educ'>EDUC. SUSTENTAVEL SYSTEM <span class="material-symbols-outlined">
+                            <h1 class="text-6xl font-bold text-white">EDUC. SUSTENTAVEL SYSTEM <span class="material-symbols-outlined">
                                 park
                             </span></h1>
-                            <span className='descricao'>
+                            <span class='font-bold'>
                                 Plataforma dedicada a conectar doadores com escolas e universidades a Pessoas necessitadas, facilitando a doação de materiais escolares essenciais de varias categorias.
                             </span>
                         </div>
@@ -148,7 +151,7 @@ function Home() {
                         <div className='barrapesquisa'>
                             <div class="divbarra">
                                 <input type="text" id="search-input" placeholder="Pesquisar..." class="" />
-                                   
+
                                 <button id='btn-pesquisa' class="">
                                     <span class="material-symbols-outlined">
                                         search
@@ -160,7 +163,7 @@ function Home() {
                     <div className='corpo'>
                         <div className='doacoes-titulo'>
                             <div className='container-titulo'>
-                                <h1>Doações Disponíveis</h1>
+                                <h1 class="text-4xl font-bold text-white">Doações Disponíveis</h1>
                                 <span
                                     type='button'
                                     onClick={() => setIsOpen(!isOpen)}
@@ -194,7 +197,7 @@ function Home() {
                         <div className='container-conteudo'>
 
                             {listadonation.map((donation) => (
-                                <div key={donation.id}  className="card-donation">
+                                <div key={donation.id} className="card-donation">
                                     <img className="" src={logoimg} alt="Imagem do Card" />
                                     <div className="">
                                         <hr />
@@ -203,15 +206,11 @@ function Home() {
                                             <hr />
                                         </div>
                                         <div className='conteudo'>
-                                            <p className="date-card">
+                                            <p className="font-bold text-xl mb-2">
                                                 Postada: {donation.dataDoacao}.
                                             </p>
-                                            <p className="date-card">
-                                                Situação: {donation.status}
-                                            </p>
-                                            <p className="date-card">
-                                                Categoria: {donation.categoria}
-                                            </p>
+                                            <span className="inline-block bg-green-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">{donation.status}</span>
+                                            <span className="inline-block bg-green-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">{donation.categoria}</span>
                                         </div>
                                     </div>
 
@@ -226,8 +225,9 @@ function Home() {
                                         </button>
                                     </div>
                                 </div>
-                            ))};
-                        </div>
+                            ))}; 
+                         
+                        </div>                     
                     </div>
                 </div>
             </div>
