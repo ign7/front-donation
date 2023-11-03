@@ -18,17 +18,17 @@ function App() {
             <header className='title'>
               <div className='logo-title' >
                 <img className='logo' src={logoimg} alt="" />
-                <h1>EDUC. SUSTENTAVEL SYSTEM</h1>
+                <h1>    EDUC. SUSTENTAVEL SYSTEM</h1>
               </div>
               <nav>
                 <ul>
-                  <Link to="/home">HOME</Link>
+                  <Link to="/home" class="hover:text-green-500">HOME</Link >
                   <li>SOBRE</li>
                   <li>
-                    <Link to="/">LOGIN</Link>
+                    <Link to="/" class="hover:text-green-500">LOGIN</Link>
                   </li>
                   <li>
-                    <Link to="/cadastro">CADASTRO</Link>
+                    <Link to="/cadastro" class="hover:text-green-500">CADASTRO</Link>
                   </li>
                 </ul>
               </nav>
