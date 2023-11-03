@@ -38,7 +38,7 @@ function CadastrarDonation() {
       <div class="Donationpage">
         <div className='container-donation'>
           <div className='title-donation'>
-            <h1 class="text-6xl font-bold p text-white">Cadastro De Doaçoes</h1>
+            <h1 class="text-6xl font-bold p text-white">Cadastro De Doaçoess</h1>
           </div>
           <form className="w-full max-w-lg">
             <div className="flex flex-wrap -mx-3 mb-6">
