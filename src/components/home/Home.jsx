@@ -78,16 +78,17 @@ function Home() {
     }
 
     const renderPageNumbers = pageNumbers.map((number) => (
+        
         <button key={number} onClick={() => setCurrentPage(number)}>
             {number}
         </button>
     ));
 
-    function aparecepaginacao(){
-        let pag=document.querySelectorAll('.container-pag');
+    function aparecepaginacao() {
+        let pag = document.querySelectorAll('.container-pag');
         pag.forEach(element => {
-          element.style.display = 'block';
-        });       
+            element.style.display = 'block';
+        });
     }
 
 
@@ -107,57 +108,57 @@ function Home() {
                             <ul>
                                 <div className='label-navs'>
                                     <li class="mb-2">
-                                        <p>Cadastrar Doaçoes</p>
-                                        <Link to="/cadastrarDoacao">
+                                        <Link to="/cadastrarDoacao" class="hover:text-gray-300">
                                             <span class="material-symbols-outlined">
                                                 app_registration
                                             </span>
                                         </Link>
+                                        <p>Cadastrar Doaçoes</p>
                                     </li>
                                 </div>
 
                                 <div className='label-navs'>
                                     <li class="mb-2">
-                                        <p>Minhas Doaçoes</p>
                                         <a href="#" class="hover:text-gray-300">
                                             <span class="material-symbols-outlined">
                                                 volunteer_activism
                                             </span>
                                         </a>
+                                        <p>Minhas Doaçoes</p>
                                     </li>
                                 </div>
 
                                 <div className='label-navs'>
                                     <li class="mb-2">
-                                        <p>Solicitaçoes Recebidas</p>
                                         <a href="#" class="hover:text-gray-300">
                                             <span class="material-symbols-outlined">
                                                 mark_email_read
                                             </span>
                                         </a>
+                                        <p>Solicitaçoes Recebidas</p>
                                     </li>
                                 </div>
 
                                 <div className='label-navs'>
                                     <li class="mb-2">
-                                        <p>Solicitaçoes Enviadas</p>
                                         <a href="#" class="hover:text-gray-300">
                                             <span class="material-symbols-outlined">
                                                 schedule_send
                                             </span>
                                         </a>
+                                        <p>Solicitaçoes Enviadas</p>
                                     </li>
                                 </div>
 
 
                                 <div className='label-navs'>
                                     <li class="mb-2">
-                                        <p>Dados Pessoais</p>
                                         <a href="#" class="hover:text-gray-300">
                                             <span class="material-symbols-outlined">
                                                 manage_accounts
                                             </span>
                                         </a>
+                                        <p>Dados Pessoais</p>
                                     </li>
                                 </div>
 
@@ -170,11 +171,15 @@ function Home() {
                 <div className='body-home'>
                     <div className='titulo-homepage'>
                         <div>
-                            <h1 class="text-6xl font-bold text-white">EDUC. SUSTENTAVEL SYSTEM <span class="material-symbols-outlined">
+                            <h1 class="text-6xl font-bold text-white">Educ. Sustentavel System <span class="material-symbols-outlined">
                                 park
                             </span></h1>
-                            <span class='font-bold'>
-                                Plataforma dedicada a conectar doadores com escolas e universidades a Pessoas necessitadas, facilitando a doação de materiais escolares essenciais de varias categorias.
+                            <span class=''>
+                            <h2>
+                                Somos o "Projeto educação Sustentavel" acreditamos que a melhor forma de mudar as pessoas é através da bondade da leitura e do conhecimento. 
+                                Gerenciamos as doações para que os materiais recebidos sejam destinados ao reúso ou a reciclagem de acordo com seu estado de conservação e classificação.
+                                Realizamos a intermediação entre Doador e Receptor na triagem dos materiais.
+                            </h2>
                             </span>
                         </div>
 
@@ -190,6 +195,7 @@ function Home() {
                             </div>
                         </div>
                     </div>
+                    <hr />
                     <div className='corpo'>
                         <div className='doacoes-titulo'>
                             <div className='container-titulo'>
@@ -240,7 +246,7 @@ function Home() {
                                         </div>
                                         <div className='conteudo'>
                                             <p className="font-bold text-xl mb-2">
-                                                Postada: {donation.dataDoacao}.
+                                                Postada {donation.dataDoacao}.
                                             </p>
                                             <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2">{donation.status}</span>
                                             <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white">{donation.categoria}</span>
@@ -261,14 +267,14 @@ function Home() {
                             ))}
                         </div>
                     </div>
-                    
-                    <div className='container-pag' style={{display:'none'}} >
+
+                    <div className='container-pag' style={{ display: 'none' }} >
                         <div className="pagination">
                             <span className="numberpag">
                                 {renderPageNumbers}
                             </span>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
 
             </div>
