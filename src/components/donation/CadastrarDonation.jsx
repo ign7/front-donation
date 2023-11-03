@@ -15,97 +15,83 @@ function CadastrarDonation() {
     'categoria': ''
   });
 
-  function handle(event) {
-    const { name, value } = event.target;
-    setCadastrarDonation({
-      ...CadastrarDonationstate,
-      [name]: value
-    });
+  function handle(user) {
+    setCadastrarDonation({ ...CadastrarDonationstate, [user.target.name]: user.target.value })
+
   }
 
 
-  function cadastrarDoacao() {
-    axios
-      .post('http://localhost:8080/donations/cadastrardonation/{usuario_id}', CadastrarDonationstate)
-      .then((response) => {
-        console.log(response.data.token);
-        navigate('/home');
-      })
-      .catch((error) => {
-        console.error(error);
-        alert('Erro ao cadastrar a doação');
-      });
+  function CadastrarDonation() {
+    axios.post('http://localhost:8080/donations/cadastrardonation/{usuario_id}', CadastrarDonationstate).then(token => {
+      console.log(token.data.token);
+      navigate('/home');
+    }).catch(error => {
+      console.log(error);
+      alert('deu ruim');
+    })
+
   }
 
 
   return (
-    <div className="CadastrarDoacao">
-      <div className="DoacaoPage">
-        <form className="formCadastro">
-          <h1>Cadastro de Doações</h1>
-          <p>Digite os dados da doação.</p>
-
-
-
-          <div className="container-inputs">
-            <div className="input-group">
-              <div className="container-inputs">
-                <label htmlFor="nome">Material</label>
-                <input
-                  className="input-text"
-                  type="text"
-                  name="nome"
-                  value={CadastrarDonationstate.nome}
-                  onChange={handle}
-                  placeholder="Caderno"
-                />
+    <div className="CadastrarDonation">
+      <div class="Donationpage">
+        <div className='container-donation'>
+          <div className='title-donation'>
+            <h1 class="text-6xl font-bold p text-white">Cadastro De Doaçoes</h1>
+          </div>
+          <form className="w-full max-w-lg">
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
+                  Nome Doação
+                </label>
+                <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" />
+                <p className="text-red-500 text-xs italic">Please fill out this field.</p>
               </div>
-              <div className="input-group-item">
-                <label htmlFor="status">Status</label>
-                <select
-                  className="input-text"
-                  name="status"
-                  value={CadastrarDonationstate.status}
-                  onChange={handle}
-                >
-                  <option value="Novo">Novo</option>
-                  <option value="Usado">Usado</option>
-                </select>
-              </div>
-              <div className="input-group-item">
-                <label htmlFor="dataDoacao">Data da Doação</label>
-                <input
-                  className="input-text"
-                  type="date"
-                  name="dataDoacao"
-                  value={CadastrarDonationstate.dataDoacao}
-                  onChange={handle}
-                />
-              </div>
-              <div className="container-inputs">
-                <label htmlFor="categoria">Categoria</label>
-                <select
-                  className="input-text"
-                  name="categoria"
-                  value={CadastrarDonationstate.categoria}
-                  onChange={handle}
-                >
-                  <option value="">Selecione a categoria</option>
-                  <option value="Categoria 1">#</option>
-                  <option value="Categoria 2">#</option>
-                </select>
+              <div className="w-full md:w-1/2 px-3">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
+                  Status
+                </label>
+                <input disabled className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe" />
               </div>
             </div>
-          </div>
 
+            <div className="flex flex-wrap -mx-3 mb-2">
+              <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-city">
+                  Data Doação
+                </label>
+                <input type="date" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" />
+              </div>
+              <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">
+                  Categoria
+                </label>
+                <div className="relative">
+                  <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <option>New Mexico</option>
+                    <option>Missouri</option>
+                    <option>Texas</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-zip">
+                  Responsavel
+                </label>
+                <input disabled className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210" />
+              </div>
+            </div>
+          </form>
+        </div>
 
-
-          <button type="button" onClick={cadastrarDoacao} className="btn-save">
-            Cadastrar Doação
-          </button>
-        </form>
       </div>
     </div>
   );
 }
+
 export default CadastrarDonation;
