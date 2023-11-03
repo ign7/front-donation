@@ -12,10 +12,10 @@ import logoimg from './img/LogoDonation.jpeg'
 function App() {
   return (
     <div className="App">
-      <div className='container-principaç'>
+      
         <Router>
-          <div className='title'>
-            <header>
+        <div className='container-principal'>
+            <header className='title'>
               <div className='logo-title' >
                 <img className='logo' src={logoimg} alt="" />
                 <h1>EDUC. SUSTENTAVEL SYSTEM</h1>
@@ -44,8 +44,6 @@ function App() {
           <Route path="/cadastrarDoacao" element={<CadastrarDonation/>}/>
         </Routes>
       </Router>
-      </div>
-
     </div>
   );
 }

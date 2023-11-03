@@ -108,7 +108,7 @@ function Home() {
                             <ul>
                                 <div className='label-navs'>
                                     <li class="mb-2">
-                                        <Link to="/cadastrarDoacao" class="hover:text-gray-300">
+                                        <Link to="/cadastrarDoacao" class="hover:text-green-500">
                                             <span class="material-symbols-outlined">
                                                 app_registration
                                             </span>
@@ -119,7 +119,7 @@ function Home() {
 
                                 <div className='label-navs'>
                                     <li class="mb-2">
-                                        <a href="#" class="hover:text-gray-300">
+                                        <a href="#" class="hover:text-green-500">
                                             <span class="material-symbols-outlined">
                                                 volunteer_activism
                                             </span>
@@ -130,7 +130,7 @@ function Home() {
 
                                 <div className='label-navs'>
                                     <li class="mb-2">
-                                        <a href="#" class="hover:text-gray-300">
+                                        <a href="#" class="hover:text-green-500">
                                             <span class="material-symbols-outlined">
                                                 mark_email_read
                                             </span>
@@ -141,7 +141,7 @@ function Home() {
 
                                 <div className='label-navs'>
                                     <li class="mb-2">
-                                        <a href="#" class="hover:text-gray-300">
+                                        <a href="#" class="hover:text-green-500">
                                             <span class="material-symbols-outlined">
                                                 schedule_send
                                             </span>
@@ -153,7 +153,7 @@ function Home() {
 
                                 <div className='label-navs'>
                                     <li class="mb-2">
-                                        <a href="#" class="hover:text-gray-300">
+                                        <a href="#" class="hover:text-green-500">
                                             <span class="material-symbols-outlined">
                                                 manage_accounts
                                             </span>
@@ -171,7 +171,7 @@ function Home() {
                 <div className='body-home'>
                     <div className='titulo-homepage'>
                         <div>
-                            <h1 class="text-6xl font-bold text-white">Educ. Sustentavel System <span class="material-symbols-outlined">
+                            <h1 class="text-6xl font-bold text-white">Educ. Sustentável System <span class="material-symbols-outlined">
                                 park
                             </span></h1>
                             <span class=''>
