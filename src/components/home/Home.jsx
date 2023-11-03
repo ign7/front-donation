@@ -62,10 +62,31 @@ function Home() {
         getDonationByCategoria(option);
     };
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5; // Change this value according to your preference
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = listadonation.slice(indexOfFirstItem, indexOfLastItem);
+
+
+    //separa minha lista de doaçoes em pagina
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(listadonation.length / itemsPerPage); i++) {
+        pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map((number) => (
+        <button key={number} onClick={() => setCurrentPage(number)}>
+            {number}
+        </button>
+    ));
+
 
     return (
         <div className="Home">
             <div class="homepage">
+
                 <div className='nav-bar-home'>
                     <div class="">
                         <div className='atividades'>
@@ -137,6 +158,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
+
                 <div className='body-home'>
                     <div className='titulo-homepage'>
                         <div>
@@ -194,43 +216,54 @@ function Home() {
                             </div>
                         </div>
 
-                        <div className='container-conteudo'>                          
-                                {listadonation.map((donation) => (
-                                    <div key={donation.id} className="card-donation">
-                                        <div>
-                                            <img className="" src={logoimg} alt="Imagem do Card" />
-                                        </div>
+                        <div className='container-conteudo'>
+                            {currentItems.map((donation) => (
 
-                                        <div className="">
+                                <div key={donation.id} className="card-donation">
+                                    <div>
+                                        <img className="" src={logoimg} alt="Imagem do Card" />
+                                    </div>
+
+                                    <div className="">
+                                        <hr />
+                                        <div className="titulocard">
+                                            <h1 class="font-bold text-xl mb-2" >{donation.nome}</h1>
                                             <hr />
-                                            <div className="titulocard">
-                                                <h1>{donation.nome}</h1>
-                                                <hr />
-                                            </div>
-                                            <div className='conteudo'>
-                                                <p className="font-bold text-xl mb-2">
-                                                    Postada: {donation.dataDoacao}.
-                                                </p>
-                                                <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2">{donation.status}</span>
-                                                <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white">{donation.categoria}</span>
-                                            </div>
                                         </div>
-
-                                        <div className="div-btn">
-                                            <button className="btn-info">
-                                                <span class="material-symbols-outlined">
-                                                    visibility
-                                                </span>
-                                                <div>
-                                                    <p> Ver Informaçoes</p>
-                                                </div>
-                                            </button>
+                                        <div className='conteudo'>
+                                            <p className="font-bold text-xl mb-2">
+                                                Postada: {donation.dataDoacao}.
+                                            </p>
+                                            <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2">{donation.status}</span>
+                                            <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white">{donation.categoria}</span>
                                         </div>
                                     </div>
-                                ))}                           
+
+                                    <div className="div-btn">
+                                        <button className="btn-info">
+                                            <span class="material-symbols-outlined">
+                                                visibility
+                                            </span>
+                                            <div>
+                                                <p> Ver Informaçoes</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
+                    
+                    <div className='container-pag'>
+                        <div className="pagination">
+                            <span className="numberpag">
+                                {renderPageNumbers}
+                            </span>
+                        </div>
+                    </div>
+                    
                 </div>
+
             </div>
         </div>
     );

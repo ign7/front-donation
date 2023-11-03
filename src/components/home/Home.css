@@ -13,7 +13,6 @@
     border-radius: 4px;
     background-color: #f7f7f7fb;
     width: 15%;
-    height: 100%;
 }
 .atividades{
     font-size: large;
@@ -186,3 +185,22 @@
     border-color: #fff; /* Cor da borda quando o mouse está sobre o card */
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Sombra quando o mouse está sobre o card */
 }
+
+  .pagination > .numberpag {
+    border-radius: 4px;
+    background-color: #fff;
+    width: 15%;
+    padding: 8px;   
+   }
+
+    .pagination > .numberpag > button{
+        padding: 8px;       
+    }
+
+    .container-pag{
+       position: relative;
+       margin-bottom: 0;
+    }
+
+
+    

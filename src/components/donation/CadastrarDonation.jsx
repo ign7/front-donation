@@ -35,7 +35,7 @@ function CadastrarDonation() {
 
   return (
     <div className="CadastrarDonation">
-      <div class="page">
+      <div class="Donationpage">
         <div className='container-donation'>
           <div className='title-donation'>
             <h1 class="text-6xl font-bold p text-white">Cadastro De Doaçoes</h1>

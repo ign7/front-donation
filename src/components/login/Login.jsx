@@ -33,7 +33,7 @@ function login() {
 
   return (
     <div className="Login">
-        <div class="page">
+        <div class="loginpage">
             <form method="POST" class="formLogin">
                 <h1>Login</h1>
                 <p>Digite os seus dados de acesso no campo abaixo.</p>

@@ -67,7 +67,7 @@ function Cadastro() {
 
   return (
     <div className="Cadastro">
-      <div class="page">
+      <div class="cadastropage">
         <form  class="formCadastro">
 
           <h1>Cadastro</h1>
