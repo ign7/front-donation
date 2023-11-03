@@ -4,9 +4,12 @@
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    color: #023047
+    color: #000000
 }
-
+h1 {
+    text-align: center;
+    line-height: 100px;
+  }
 
 .loginpage {
     display: flex;
@@ -16,7 +19,7 @@
     justify-content: center;
     width: 100%;
     height: 100vh;
-    background-color: #0ca852;
+    background: linear-gradient(to bottom, #15b15b, #007bff);
 }
 
 .formLogin {
@@ -56,4 +59,24 @@
     border-radius: 4px;
     transition: all linear 160ms;
     outline: none;
+}
+p a {
+    text-decoration: underline;
+    color: blue;
+  }
+
+.btn {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  
 }
