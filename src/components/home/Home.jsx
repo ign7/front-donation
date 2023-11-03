@@ -55,6 +55,7 @@ function Home() {
     const handleOptionClick = (option) => {
         setSelectedOption(option);
         console.log(option);
+        aparecepaginacao();
         setIsOpen(false);
         if (option === 'TODOS') {
             getAllDonations();
@@ -81,6 +82,13 @@ function Home() {
             {number}
         </button>
     ));
+
+    function aparecepaginacao(){
+        let pag=document.querySelectorAll('.container-pag');
+        pag.forEach(element => {
+          element.style.display = 'block';
+        });       
+    }
 
 
     return (
@@ -254,14 +262,13 @@ function Home() {
                         </div>
                     </div>
                     
-                    <div className='container-pag'>
+                    <div className='container-pag' style={{display:'none'}} >
                         <div className="pagination">
                             <span className="numberpag">
                                 {renderPageNumbers}
                             </span>
                         </div>
-                    </div>
-                    
+                    </div>                    
                 </div>
 
             </div>
