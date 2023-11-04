@@ -21,17 +21,7 @@ function Home() {
 
     const [listadonation, setlistadonation] = useState([]);
 
-    /* function getAllDonations() {
-        if (selectedOption === 'TODOS') {
-            axios.get('http://localhost:8080/donations/todos').then(data => {
-                
-                console.log(data);
-                setlistadonation(data.data);
-            }).catch(error => {
-                console.log(error);
-            });
-        }
-    } */
+    
 
     function getAllDonations() {
         if (selectedOption === 'TODOS') {
@@ -44,6 +34,7 @@ function Home() {
             console.log(localStorage.getItem('tokenjwt'));
             setlistadonation(data.data);
           }).catch(error => {
+            alert('NÃO AUTORIZADO.');
             console.log(error);
           });
         }
@@ -60,23 +51,12 @@ function Home() {
             console.log(localStorage.getItem('tokenjwt'));
             setlistadonation(data.data);
           }).catch(error => {
-            console.log(error);
-           
+            alert('NÃO AUTORIZADO.');
+            console.log(error);            
           });
         }
     }
 
-    /* function getDonationByCategoria(option) {
-        if (option != 'TODOS') {
-            axios.get('http://localhost:8080/donations/pesquisardoacao/categoriadoacao=' + option).then(data => {
-                console.log(data);
-                setlistadonation(data.data);
-            }).catch(error => {
-                console.log(error);
-            });
-        }
-    }
- */
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState('TODOS');
 

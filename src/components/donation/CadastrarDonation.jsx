@@ -37,58 +37,64 @@ function CadastrarDonation() {
     <div className="CadastrarDonation">
       <div class="Donationpage">
         <div className='container-donation'>
-          <div className='title-donation'>
-            <h1 class="text-6xl font-bold p text-white">Cadastro De Doaçoess</h1>
-          </div>
-          <form className="w-full max-w-lg">
-            <div className="flex flex-wrap -mx-3 mb-6">
-              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
-                  Nome Doação
-                </label>
-                <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" />
-                <p className="text-red-500 text-xs italic">Please fill out this field.</p>
-              </div>
-              <div className="w-full md:w-1/2 px-3">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
-                  Status
-                </label>
-                <input disabled className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe" />
-              </div>
-            </div>
 
-            <div className="flex flex-wrap -mx-3 mb-2">
-              <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-city">
-                  Data Doação
-                </label>
-                <input type="date" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" />
-              </div>
-              <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">
-                  Categoria
-                </label>
-                <div className="relative">
-                  <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                    <option>New Mexico</option>
-                    <option>Missouri</option>
-                    <option>Texas</option>
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                  </div>
+          <div className='form-container'>
+            <form className="bg-white p-8 rounded shadow-md w-96 hover:bg-gray-100" >
+              <h2 className="text-2xl mb-6 font-semibold text-gray-800">Formulário de Doação</h2>
+              <div className="mb-4 flex gap-4">
+                <div className="flex-1">
+                  <label htmlFor="nome" className="block text-sm font-medium text-gray-600">Nome:</label>
+                  <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    value={CadastrarDonationstate.nome}
+                    onChange={handle}
+                    className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
+                  />
+                </div>
+                <div className="flex-1">
+                  <label htmlFor="dataDoacao" className="block text-sm font-medium text-gray-600">Data de Doação:</label>
+                  <input
+                    type="date"
+                    id="dataDoacao"
+                    name="dataDoacao"
+                    value={CadastrarDonationstate.dataDoacao}
+                    onChange={handle}
+                    className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
+                  />
                 </div>
               </div>
-              <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-zip">
-                  Responsavel
-                </label>
-                <input disabled className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210" />
+              <div className="mb-4">
+                <label htmlFor="categoria" className="block text-sm font-medium text-gray-600">Categoria:</label>
+                <select
+                  id="categoria"
+                  name="categoria"
+                  value={CadastrarDonationstate.categoria}
+                  onChange={handle}
+                  className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
+                >
+                  <option value="">Selecione uma categoria</option>
+                  <option value="ELETRONICO">Eletrônico</option>
+                  <option value="MATERIALESCOLAR">Material Escolar</option>
+                  {/* Adicione mais opções conforme necessário */}
+                </select>
               </div>
-            </div>
-          </form>
-        </div>
+              <button type="submit" onClick={CadastrarDonation} className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                Enviar
+              </button>
+            </form>
+          </div>
+          <div className='conteudo-doaçao'>
 
+            <div className='title-donation'>
+              <h1 class="text-5xl font-bold p ">Realizar cadastro de Doaçao</h1>
+            </div>
+            <p>A doação de materiais escolares desempenha um papel crucial em nossa sociedade, ajudando a construir um futuro melhor para as gerações vindouras. Ao contribuir com materiais escolares, você está investindo no acesso à educação e no desenvolvimento de habilidades fundamentais para pessoas necessitadas e jovens. ao doar materiais escolares, você está não apenas fornecendo recursos tangíveis, mas também investindo no potencial humano.
+               Sua generosidade cria um impacto positivo nas vidas das pessoas, capacitando-as a sonhar alto, alcançar seus objetivos e, eventualmente, contribuir significativamente para a sociedade. Cada doação conta e ajuda a construir um futuro mais brilhante e educado para todos.</p>
+          </div>
+        </div>
+        <hr />
       </div>
     </div>
   );
