@@ -6,6 +6,7 @@ import './Cadastro.css';
 
 
 function Cadastro() {
+
   
   const navigate = useNavigate();
   const [cadastro, setcadastro] = useState({

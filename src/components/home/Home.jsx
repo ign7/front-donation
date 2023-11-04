@@ -198,8 +198,8 @@ function Home() {
                             <span class=''>
                             <h2 className='h2-educ'>
                                 Somos o "Projeto educação Sustentavel" acreditamos que a melhor forma de mudar as pessoas é através da bondade da leitura e do conhecimento. 
-                                Gerenciamos as doações para que os materiais recebidos sejam destinados ao reúso ou a reciclagem de acordo com seu estado de conservação e classificação.
-                                Realizamos a intermediação entre Doador e Receptor na triagem dos materiais.
+                                Gerenciamos as doações para que os materiais recebidos sejam destinados a novas pessoas que necessitam deste material afim de estudos.
+                                Realizamos a intermediação entre DOADOR e RECEPTOR na triagem dos materiais.
                             </h2>
                             </span>
                             </div>

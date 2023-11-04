@@ -9,13 +9,68 @@ import './Donation.css';
 function CadastrarDonation() {
   const navigate = useNavigate();
 
+  const [mostrarFormularioMateriais, setMostrarFormularioMateriais] = useState(false);
+  const [imagemSelecionada, setImagemSelecionada] = useState(null);
+
+  const [material, setmaterial] = useState({
+    'nome': '',
+    'qualidade': '',
+    'imagem': '',
+    'quantidade': 0,
+    'desricao': '',
+  });
+
+  const handleImagemChange = (event) => {
+    const file = event.target.files[0];
+    setImagemSelecionada(file);
+  };
+
+  function salvar() {
+    
+    console.log(material);
+    const iddonation='';
+    const formData = new FormData();
+    formData.append('veiculo', JSON.stringify(material));
+    if (imagemSelecionada) {
+      formData.append('imagem', imagemSelecionada);
+    }
+
+
+    axios.post(`http://localhost:8080/materiais/cadastrarmaterial/donationid=${iddonation}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+      .then(result => {
+        console.log(result);
+
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setmaterial({ ...material, [name]: value });
+  };
+
+  const qualidadeOpcoes = [
+    'PERFEITO',
+    'BOM ESTADO',
+    'USADO',
+    'RUIM'
+  ];
+
   const [CadastrarDonationstate, setCadastrarDonation] = useState({
     'nome': '',
     'dataDoacao': '',
     'categoria': ''
   });
 
-  //const [selectedOption, setSelectedOption] = useState('TODOS');
+  const [donations, setlistadonation] = useState([]);
+
 
   const options = [
     'ELETRONICO',
@@ -26,7 +81,7 @@ function CadastrarDonation() {
     'CADERNO'
   ];
 
-  // Altere a função handle para lidar com a mudança no select
+
   function handle(event) {
     const { name, value } = event.target;
     setCadastrarDonation({ ...CadastrarDonationstate, [name]: value });
@@ -34,7 +89,7 @@ function CadastrarDonation() {
 
 
   function CadastrarDonation(event) {
-  event.preventDefault();
+    event.preventDefault();
     const login = localStorage.getItem('login');
     const token = localStorage.getItem('tokenjwt');
     const config = {
@@ -44,31 +99,16 @@ function CadastrarDonation() {
     };
     axios.post(`http://localhost:8080/donations/cadastrardonation/${login}`, CadastrarDonationstate, config)
       .then(response => {
+        setlistadonation(response.data)
         console.log(response.data.token);
+        alert('cadastro de Doação Efetuado !!! ')
+        setMostrarFormularioMateriais(true);
       })
       .catch(error => {
         console.log(error);
         alert('Algo deu errado ao cadastrar a doação');
-    });
+      });
   }
-
-
-  /* function CadastrarDonation() {
-    const login=localStorage.getItem('login');
-    console.log(login);
-    axios.post('http://localhost:8080/donations/cadastrardonation/'+login,{
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('tokenjwt')}`, // Inclua o token aqui
-      },
-    } ,CadastrarDonationstate).then(token => {
-      console.log(token.data.token);
-      navigate('/home');
-    }).catch(error => {
-      console.log(error.response);
-      alert('deu ruim');
-    })
-
-  } */
 
 
   return (
@@ -131,6 +171,82 @@ function CadastrarDonation() {
           </div>
         </div>
         <hr />
+
+
+        <div className='-container-material'>
+          {mostrarFormularioMateriais && (
+            <div className="bg-white p-8 rounded shadow-md w-96 mx-auto mt-8">
+              <h2 className="text-2xl mb-6 font-semibold text-gray-800">Cadastro de Materiais</h2>
+              {/* {donations.map((donation) => ( */}
+                <form /* key={donation.id} */ >
+                  <div className="mb-4">
+                    <label htmlFor="nome" className="block text-sm font-medium text-gray-600">Nome:</label>
+                    <input
+                      type="text"
+                      id="nome"
+                      name="nome"
+                      value={material.nome}
+                      onChange={handleInputChange}
+                      className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label htmlFor="qualidade" className="block text-sm font-medium text-gray-600">Qualidade:</label>
+                    <select
+                      id="qualidade"
+                      name="qualidade"
+                      value={material.qualidade}
+                      onChange={handleInputChange}
+                      className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
+                    >
+                      <option value="">Selecione a qualidade</option>
+                      {qualidadeOpcoes.map((opcao, index) => (
+                        <option key={index} value={opcao}>
+                          {opcao}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="mb-4">
+                    <label htmlFor="imagem" onChange={handleImagemChange} name="imagem" className="block text-sm font-medium text-gray-600">Imagem:</label>
+                    <input
+                      type="file"
+                      id="imagem"
+                      name="imagem"
+                      value={material.imagem}
+                      onChange={handleInputChange}
+                      className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label htmlFor="quantidade" className="block text-sm font-medium text-gray-600">Quantidade:</label>
+                    <input
+                      type="number"
+                      id="quantidade"
+                      name="quantidade"
+                      value={material.quantidade}
+                      onChange={handleInputChange}
+                      className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label htmlFor="descricao" className="block text-sm font-medium text-gray-600">Descrição:</label>
+                    <textarea
+                      id="descricao"
+                      name="descricao"
+                      value={material.descricao}
+                      onChange={handleInputChange}
+                      className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
+                    />
+                  </div>
+                  <button onClick={salvar(/* donation.id */)} className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600 focus:outline-none focus:ring focus:border-blue-300">
+                    Cadastrar Material
+                  </button>
+                </form>
+              {/* ))} */}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
