@@ -126,7 +126,7 @@ function Home() {
                             <ul>
                                 <div className='label-navs'>
                                     <li class="mb-2">
-                                        <Link to="/cadastrarDoacao" class="hover:text-white">
+                                        <Link to="/teladoacao" class="hover:text-white">
                                             <span class="material-symbols-outlined">
                                                 app_registration
                                             </span>
@@ -188,17 +188,21 @@ function Home() {
 
                 <div className='body-home'>
                     <div className='titulo-homepage'>
-                        <div>
-                            <h1 class="text-6xl font-bold text-white">Educ. Sustentável System <span class="material-symbols-outlined">
+                        <div className='content-educ'>
+                            <div>
+                            <h1 class="text-6xl font-bold">Educ. Sustentável System <span class="material-symbols-outlined">
                                 park
                             </span></h1>
+                            </div>
+                            <div>
                             <span class=''>
-                            <h2>
+                            <h2 className='h2-educ'>
                                 Somos o "Projeto educação Sustentavel" acreditamos que a melhor forma de mudar as pessoas é através da bondade da leitura e do conhecimento. 
                                 Gerenciamos as doações para que os materiais recebidos sejam destinados ao reúso ou a reciclagem de acordo com seu estado de conservação e classificação.
                                 Realizamos a intermediação entre Doador e Receptor na triagem dos materiais.
                             </h2>
                             </span>
+                            </div>
                         </div>
 
                         <div className='barrapesquisa'>
@@ -217,7 +221,7 @@ function Home() {
                     <div className='corpo'>
                         <div className='doacoes-titulo'>
                             <div className='container-titulo'>
-                                <h1 class="text-4xl font-bold text-white">Doações Disponíveis</h1>
+                                <h1 class="text-4xl font-bold">Doações Disponíveis</h1>
                                 <span
                                     type='button'
                                     onClick={() => setIsOpen(!isOpen)}

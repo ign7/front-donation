@@ -41,7 +41,7 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home/>} />
-          <Route path="/cadastrarDoacao" element={<CadastrarDonation/>}/>
+          <Route path="/teladoacao" element={<CadastrarDonation/>}/>
         </Routes>
       </Router>
     </div>

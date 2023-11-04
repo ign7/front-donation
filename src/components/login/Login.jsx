@@ -21,10 +21,11 @@ function handle(user){
 
 function login() {
   axios.post('http://localhost:8080/usuarios/login',loginstate).then(token=>{
-  console.log(token.data.token);
+  console.log(token.data.login);
   const tokenjwt=token.data.token;
   navigate('/home');
   localStorage.setItem('tokenjwt',tokenjwt);
+  localStorage.setItem('login',token.data.login);
 }).catch(error=>{
   console.log(error);
   alert('Ocorreu um erro durante o login. Por favor, tente novamente.');
