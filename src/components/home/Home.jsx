@@ -13,22 +13,60 @@ import '../../../src/index.css'
 
 function Home() {
 
+    window.addEventListener('beforeunload', () => {
+        localStorage.clear(); // Limpa todo o conteúdo do localStorage
+      });
+
     const navigate = useNavigate();
 
     const [listadonation, setlistadonation] = useState([]);
 
-    function getAllDonations() {
+    /* function getAllDonations() {
         if (selectedOption === 'TODOS') {
             axios.get('http://localhost:8080/donations/todos').then(data => {
+                
                 console.log(data);
                 setlistadonation(data.data);
             }).catch(error => {
                 console.log(error);
             });
         }
-    }
+    } */
+
+    function getAllDonations() {
+        if (selectedOption === 'TODOS') {
+          axios.get('http://localhost:8080/donations/todos', {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('tokenjwt')}`, // Inclua o token aqui
+            },
+          }).then(data => {
+            console.log(data);
+            console.log(localStorage.getItem('tokenjwt'));
+            setlistadonation(data.data);
+          }).catch(error => {
+            console.log(error);
+          });
+        }
+      }
 
     function getDonationByCategoria(option) {
+        if (option !== 'TODOS') {
+          axios.get('http://localhost:8080/donations/pesquisardoacao/categoriadoacao=' + option, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('tokenjwt')}`, // Inclua o token aqui
+            },
+          }).then(data => {
+            console.log(data);
+            console.log(localStorage.getItem('tokenjwt'));
+            setlistadonation(data.data);
+          }).catch(error => {
+            console.log(error);
+           
+          });
+        }
+    }
+
+    /* function getDonationByCategoria(option) {
         if (option != 'TODOS') {
             axios.get('http://localhost:8080/donations/pesquisardoacao/categoriadoacao=' + option).then(data => {
                 console.log(data);
@@ -38,7 +76,7 @@ function Home() {
             });
         }
     }
-
+ */
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState('TODOS');
 

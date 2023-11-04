@@ -22,10 +22,12 @@ function handle(user){
 function login() {
   axios.post('http://localhost:8080/usuarios/login',loginstate).then(token=>{
   console.log(token.data.token);
+  const tokenjwt=token.data.token;
   navigate('/home');
+  localStorage.setItem('tokenjwt',tokenjwt);
 }).catch(error=>{
   console.log(error);
-  alert('deu ruim');
+  alert('Ocorreu um erro durante o login. Por favor, tente novamente.');
 })
 
 }
