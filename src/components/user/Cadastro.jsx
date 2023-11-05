@@ -21,7 +21,6 @@ function Cadastro() {
 
    function cadastrar() {
     axios.post('http://localhost:8080/usuarios/register',cadastro).then(data => {
-    console.log(data);
     navigate('/');     
     }).catch(error=>{
        console.log(error);
@@ -29,16 +28,7 @@ function Cadastro() {
 
   } 
 
-  /*  function handleChangeusuario(user){
-    const check=user.target.name;
-    if(check==="DOADOR" || check==="RECEPTOR" ){
-      setcadastro({...cadastro.role=check});
-      setcadastro({...cadastro,[user.target.name]:user.target.value})
-    }
-      
-  } */
  
-
   function handleChangeusuario(event) {
     const { name, value, checked } = event.target;
   

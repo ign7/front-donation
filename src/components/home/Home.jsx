@@ -30,8 +30,6 @@ function Home() {
                     Authorization: `Bearer ${localStorage.getItem('tokenjwt')}`, // Inclua o token aqui
                 },
             }).then(data => {
-                console.log(data);
-                console.log(localStorage.getItem('tokenjwt'));
                 setlistadonation(data.data);
             }).catch(error => {
                 alert('NÃO AUTORIZADO.');
@@ -47,8 +45,6 @@ function Home() {
                     Authorization: `Bearer ${localStorage.getItem('tokenjwt')}`, // Inclua o token aqui
                 },
             }).then(data => {
-                console.log(data);
-                console.log(localStorage.getItem('tokenjwt'));
                 setlistadonation(data.data);
             }).catch(error => {
                 alert('NÃO AUTORIZADO.');
@@ -72,7 +68,6 @@ function Home() {
 
     const handleOptionClick = (option) => {
         setSelectedOption(option);
-        console.log(option);
         aparecepaginacao();
         setIsOpen(false);
         if (option === 'TODOS') {
@@ -229,15 +224,15 @@ function Home() {
                 <div className='body-home'>
                     <div className='titulo-homepage'>
                         <div className='content-educ'>
-                            <div>
-                                <h1 class="text-6xl font-bold">Educ. Sustentável System <span class="material-symbols-outlined">
+                            <div className='title-educ'>
+                                <h1 class="text-6xl font-bold">Educação Sustentável System <span class="material-symbols-outlined">
                                     park
                                 </span></h1>
                             </div>
-                            <div>
+                            <div className='desc-educ'>
                                 <span class=''>
                                     <h2 className='h2-educ'>
-                                        Somos o "Projeto educação Sustentavel" acreditamos que a melhor forma de mudar as pessoas é através da bondade da leitura e do conhecimento.
+                                        Somos o "Projeto Educação Sustentavel" acreditamos que a melhor forma de mudar as pessoas é através da bondade da leitura e do conhecimento.
                                         Gerenciamos as doações para que os materiais recebidos sejam destinados a novas pessoas que necessitam deste material afim de estudos.
                                         Realizamos a intermediação entre DOADOR e RECEPTOR na triagem dos materiais.
                                     </h2>

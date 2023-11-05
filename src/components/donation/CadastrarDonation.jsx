@@ -43,31 +43,6 @@ function CadastrarDonation() {
     }, 5000);
   };
 
-  /* function salvar(event) {
-    event.preventDefault();
-
-    const token = localStorage.getItem('tokenjwt');
-    const iddonation = localStorage.getItem('iddonation');
-    const formData = new FormData();
-    formData.append('material', JSON.stringify(material));
-    if (imagemSelecionada) {
-      formData.append('imagem', imagemSelecionada);
-      console.log(formData);
-    }
-    axios.post(`http://localhost:8080/materiais/cadastrarmaterial/donationid=${iddonation}`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(result => {
-        exibirMensagemSucesso();
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  } */
-
 
   function salvar(event) {
     event.preventDefault();

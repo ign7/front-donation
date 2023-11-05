@@ -13,7 +13,9 @@
 }
 .content-educ{
     padding: 1.0rem;
-
+}
+.desc-educ{
+    width: 50%;
 }
 
 .homepage {
@@ -132,7 +134,7 @@
 .doacoes-titulo{
     display: flex;
     flex-direction: column;
-    padding-top: 1.5rem;
+    padding: 1.0rem;
     font-size: 2.5rem;
 }   
 #nameoption{
@@ -239,6 +241,7 @@ padding: 8px;
 }
 
 .container-pag{
+    padding-left: 1.5rem;
     width: 30%;
     position: relative;
     margin-bottom: 0;
