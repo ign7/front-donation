@@ -130,6 +130,9 @@ function CadastrarDonation() {
       });
   }
 
+  function btnsair(){
+    navigate('/home');     
+  }
 
   return (
     <div className="CadastrarDonation">
@@ -208,7 +211,7 @@ function CadastrarDonation() {
               )}
 
               <div className='btn-sair'>
-                <button className="w-500 bg-red-500 text-white p-2 rounded hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300" >Sair</button>
+                <button onClick={btnsair} className="w-500 bg-red-500 text-white p-2 rounded hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300" >Sair</button>
               </div>
             </div>
           )}
@@ -292,7 +295,7 @@ function CadastrarDonation() {
         </div>
       </div>
       {doacaoSucesso && (
-        <div className='fixed top-0 right-0 p-4 bg-green-500 text-white rounded shadow'>
+        <div className='fixed top-0 right-0 p-4 bg-blue-500 text-white rounded shadow'>
           <p>Cadastro de Doação Realizado com sucesso !!</p>
         </div>)}
     </div>
