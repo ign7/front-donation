@@ -13,6 +13,7 @@ function CadastrarDonation() {
   const [msgmaterial, setmsgmaterial] = useState(false);
   const [imagemSelecionada, setImagemSelecionada] = useState(null);
   const [doacaoSucesso, setdoacaoSucesso] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const [material, setmaterial] = useState({
     'nome': '',
@@ -42,7 +43,7 @@ function CadastrarDonation() {
     }, 5000);
   };
 
-  function salvar(event) {
+  /* function salvar(event) {
     event.preventDefault();
 
     const token = localStorage.getItem('tokenjwt');
@@ -65,8 +66,41 @@ function CadastrarDonation() {
       .catch(error => {
         console.error(error);
       });
-  }
+  } */
 
+
+  function salvar(event) {
+    event.preventDefault();
+  
+    const token = localStorage.getItem('tokenjwt');
+    const iddonation = localStorage.getItem('iddonation');
+    const formData = new FormData();
+    formData.append('material', JSON.stringify(material));
+    if (imagemSelecionada) {
+      formData.append('imagem', imagemSelecionada);
+    }
+    axios.post(`http://localhost:8080/materiais/cadastrarmaterial/donationid=${iddonation}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(result => {
+        // Resetar os campos do formulário após o envio bem-sucedido
+        setmaterial({
+          nome: '',
+          qualidade: '',
+          quantidade: '',
+          descricao: ''
+        });
+        setImagemSelecionada(null);
+        exibirMensagemSucesso();
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+  
 
 
 
@@ -123,6 +157,7 @@ function CadastrarDonation() {
         localStorage.setItem('iddonation', iddonation);
         exibirMensagemSucessoDoacao();
         setMostrarFormularioMateriais(true);
+        setIsDisabled(true);
       })
       .catch(error => {
         console.log(error);
@@ -150,6 +185,7 @@ function CadastrarDonation() {
                     id="nome"
                     name="nome"
                     value={CadastrarDonationstate.nome}
+                    disabled={isDisabled}
                     onChange={handle}
                     className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
                   />
@@ -161,6 +197,7 @@ function CadastrarDonation() {
                     id="dataDoacao"
                     name="dataDoacao"
                     value={CadastrarDonationstate.dataDoacao}
+                    disabled={isDisabled}
                     onChange={handle}
                     className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
                   />
@@ -168,7 +205,7 @@ function CadastrarDonation() {
               </div>
               <div className="mb-4">
                 <label htmlFor="categoria" className="block text-sm font-medium text-gray-600">Categoria:</label>
-                <select id="categoria" name="categoria" value={CadastrarDonationstate.categoria} onChange={handle}
+                <select id="categoria" name="categoria" value={CadastrarDonationstate.categoria} disabled={isDisabled}  onChange={handle}
                   className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
                 >
                   <option value="">Selecione uma categoria</option>
@@ -179,8 +216,8 @@ function CadastrarDonation() {
                   ))}
                 </select>
               </div>
-              <button onClick={Cadastrardonation} className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
-                Enviar
+              <button onClick={Cadastrardonation} disabled={isDisabled} className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                Registrar
               </button>
             </form>
           </div>
