@@ -18,3 +18,9 @@
     height: 70rem;
     background-color: #28c074;
 }
+
+.container-material{
+    float: right;
+    padding: 3.0rem;
+    padding-left: 2.0rem;
+}

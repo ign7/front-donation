@@ -26,9 +26,9 @@ function CadastrarDonation() {
   };
 
   function salvar() {
-    
+
     console.log(material);
-    const iddonation='';
+    const iddonation = '';
     const formData = new FormData();
     formData.append('veiculo', JSON.stringify(material));
     if (imagemSelecionada) {
@@ -173,13 +173,13 @@ function CadastrarDonation() {
         <hr />
 
 
-        <div className='-container-material'>
+        <div className="container-material">
           {mostrarFormularioMateriais && (
             <div className="bg-white p-8 rounded shadow-md w-96 mx-auto mt-8">
               <h2 className="text-2xl mb-6 font-semibold text-gray-800">Cadastro de Materiais</h2>
-              {/* {donations.map((donation) => ( */}
-                <form /* key={donation.id} */ >
-                  <div className="mb-4">
+              <form>
+                <div className="mb-4 flex gap-4">
+                  <div className="flex-1">
                     <label htmlFor="nome" className="block text-sm font-medium text-gray-600">Nome:</label>
                     <input
                       type="text"
@@ -190,7 +190,7 @@ function CadastrarDonation() {
                       className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
                     />
                   </div>
-                  <div className="mb-4">
+                  <div className="flex-1">
                     <label htmlFor="qualidade" className="block text-sm font-medium text-gray-600">Qualidade:</label>
                     <select
                       id="qualidade"
@@ -207,46 +207,49 @@ function CadastrarDonation() {
                       ))}
                     </select>
                   </div>
-                  <div className="mb-4">
-                    <label htmlFor="imagem" onChange={handleImagemChange} name="imagem" className="block text-sm font-medium text-gray-600">Imagem:</label>
-                    <input
-                      type="file"
-                      id="imagem"
-                      name="imagem"
-                      value={material.imagem}
-                      onChange={handleInputChange}
-                      className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="quantidade" className="block text-sm font-medium text-gray-600">Quantidade:</label>
-                    <input
-                      type="number"
-                      id="quantidade"
-                      name="quantidade"
-                      value={material.quantidade}
-                      onChange={handleInputChange}
-                      className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="descricao" className="block text-sm font-medium text-gray-600">Descrição:</label>
-                    <textarea
-                      id="descricao"
-                      name="descricao"
-                      value={material.descricao}
-                      onChange={handleInputChange}
-                      className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
-                    />
-                  </div>
-                  <button onClick={salvar(/* donation.id */)} className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600 focus:outline-none focus:ring focus:border-blue-300">
-                    Cadastrar Material
-                  </button>
-                </form>
-              {/* ))} */}
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="imagem" className="block text-sm font-medium text-gray-600">Imagem:</label>
+                  <input
+                    type="file"
+                    id="imagem"
+                    name="imagem"
+                    onChange={handleInputChange}
+                    className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="quantidade" className="block text-sm font-medium text-gray-600">Quantidade:</label>
+                  <input
+                    type="number"
+                    id="quantidade"
+                    name="quantidade"
+                    value={material.quantidade}
+                    onChange={handleInputChange}
+                    className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="descricao" className="block text-sm font-medium text-gray-600">Descrição:</label>
+                  <textarea
+                    id="descricao"
+                    name="descricao"
+                    value={material.descricao}
+                    onChange={handleInputChange}
+                    className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
+                  />
+                </div>
+                <button
+                  onClick={salvar}
+                  className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600 focus:outline-none focus:ring focus:border-blue-300"
+                >
+                  Cadastrar Material
+                </button>
+              </form>
             </div>
           )}
         </div>
+
       </div>
     </div>
   );
