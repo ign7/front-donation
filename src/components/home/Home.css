@@ -43,6 +43,19 @@
 #container-nav-actions{
     padding: 0.025rem;
 }
+.label-navs-user{
+    padding: 0.15rem;
+    padding-left: 40px;
+    transition: all 0.3s ease; 
+}
+
+.label-navs-user:hover{
+    padding: 0.15rem;
+    background-color: #28c074; 
+    border-color: #999; 
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); 
+}
+
 
 .label-navs{
     padding: 0.15rem;
@@ -51,6 +64,7 @@
 
 .label-navs:hover{
     padding: 0.15rem;
+    padding-left: 40px;
     background-color: #28c074; 
     border-color: #999; 
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); 
@@ -165,7 +179,6 @@
 .title-drop{
     color: black;
 }
-
 
 
 .card-donation{
