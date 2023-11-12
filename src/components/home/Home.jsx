@@ -21,13 +21,13 @@ function Home() {
 
     const [listadonation, setlistadonation] = useState([]);
 
-    const [selectedIdDonation, setSelectedIdDonation] = useState();
+    const [selectedIdDonation, setSelectednomeDonation] = useState();
 
 
     function infoDonationRoute(donation) {
         console.log(donation);
-        setSelectedIdDonation(donation.id);
-        localStorage.setItem('idDonationSelecionada', donation.id);
+        setSelectednomeDonation(donation.nome);
+        localStorage.setItem('nomeDonationSelecionada', donation.nome);
         navigate('/donation') // Descomente esta linha se tiver uma função de navegação
     }
 

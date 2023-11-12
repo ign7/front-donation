@@ -19,8 +19,13 @@ function Donation() {
     }
 
 
-  /*   function Donation() {
-        axios.post('http://localhost:8080/usuarios/Donation', Donationstate).then(token => {
+    function getDonationByName() {
+        const nome=localStorage.getItem('nomeDonationSelecionada');
+        axios.get('http://localhost:8080/donations/pesquisardoacao/nomedoacao='+nome, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('tokenjwt')}`,
+            },
+        }).then(token => {
             console.log(token.data.Donation);
             const tokenjwt = token.data.token;
             navigate('/home');
@@ -32,7 +37,7 @@ function Donation() {
         })
 
     }
- */
+ 
 
     return (
         <div className="Donation">
