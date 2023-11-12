@@ -21,9 +21,15 @@ function Home() {
 
     const [listadonation, setlistadonation] = useState([]);
 
-     function infoDonationRoute(){
-        navigate('/donation')
-     }
+    const [selectedIdDonation, setSelectedIdDonation] = useState();
+
+
+    function infoDonationRoute(donation) {
+        console.log(donation);
+        setSelectedIdDonation(donation.id);
+        localStorage.setItem('idDonationSelecionada', donation.id);
+        navigate('/donation') // Descomente esta linha se tiver uma função de navegação
+    }
 
     function getAllDonations() {
         if (selectedOption === 'TODOS') {
@@ -313,7 +319,7 @@ function Home() {
                                     </div>
 
                                     <div className="div-btn">
-                                        <button className="btn-info" onClick={infoDonationRoute}>
+                                        <button className="btn-info" onClick={() => infoDonationRoute(donation)}>
                                             <span class="material-symbols-outlined">
                                                 visibility
                                             </span>
