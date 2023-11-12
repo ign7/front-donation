@@ -46,7 +46,7 @@ function CadastrarDonation() {
 
   function salvar(event) {
     event.preventDefault();
-  
+
     const token = localStorage.getItem('tokenjwt');
     const iddonation = localStorage.getItem('iddonation');
     const formData = new FormData();
@@ -75,7 +75,7 @@ function CadastrarDonation() {
         console.error(error);
       });
   }
-  
+
 
 
 
@@ -140,8 +140,8 @@ function CadastrarDonation() {
       });
   }
 
-  function btnsair(){
-    navigate('/home');     
+  function btnsair() {
+    navigate('/home');
   }
 
   return (
@@ -180,7 +180,7 @@ function CadastrarDonation() {
               </div>
               <div className="mb-4">
                 <label htmlFor="categoria" className="block text-sm font-medium text-gray-600">Categoria:</label>
-                <select id="categoria" name="categoria" value={CadastrarDonationstate.categoria} disabled={isDisabled}  onChange={handle}
+                <select id="categoria" name="categoria" value={CadastrarDonationstate.categoria} disabled={isDisabled} onChange={handle}
                   className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
                 >
                   <option value="">Selecione uma categoria</option>
@@ -206,6 +206,7 @@ function CadastrarDonation() {
           </div>
         </div>
         <hr />
+
         <div className='container-material-donation'>
           {mostrarFormularioMateriais && (
             <div className='conteudo-material'>

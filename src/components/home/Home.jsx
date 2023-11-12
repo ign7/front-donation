@@ -21,7 +21,9 @@ function Home() {
 
     const [listadonation, setlistadonation] = useState([]);
 
-
+     function infoDonationRoute(){
+        navigate('/donation')
+     }
 
     function getAllDonations() {
         if (selectedOption === 'TODOS') {
@@ -311,12 +313,12 @@ function Home() {
                                     </div>
 
                                     <div className="div-btn">
-                                        <button className="btn-info">
+                                        <button className="btn-info" onClick={infoDonationRoute}>
                                             <span class="material-symbols-outlined">
                                                 visibility
                                             </span>
                                             <div>
-                                                <p> Ver Informaçoes</p>
+                                                <p > Ver Informaçoes</p>
                                             </div>
                                         </button>
                                     </div>

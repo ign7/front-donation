@@ -4,6 +4,7 @@ import Footer from './components/footer/Footer';
 import Login from './components/login/Login';
 import Home from './components/home/Home';
 import Cadastro from './components/user/Cadastro';
+import Donation from './components/donation/Donation';
 import CadastrarDonation from './components/donation/CadastrarDonation';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import logoimg from './img/LogoDonation.jpeg'
@@ -42,6 +43,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home/>} />
           <Route path="/teladoacao" element={<CadastrarDonation/>}/>
+          <Route path="/donation" element={<Donation/>}/>
         </Routes>
       </Router>
     </div>
