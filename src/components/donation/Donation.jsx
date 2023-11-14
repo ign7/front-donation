@@ -5,6 +5,7 @@ import './Donation.css';
 
 
 
+
 function Donation() {
     const navigate = useNavigate();
 
@@ -45,12 +46,7 @@ function Donation() {
                 <form method="POST" class="formDonation">
                     <h1>Donation</h1>
                     <p>Digite os seus dados de acesso no campo abaixo.</p>
-                    <label for="Donation">Donation</label>
-                    <input type="text" name="" value="" onChange="" placeholder="Digite seu e-mail" autofocus="true" />
-                    <label for="password">Senha</label>
-                    <input type="password" name="password" value="" onChange="" placeholder="Digite seu e-mail" />
-                    <a href="">Esqueci minha senha</a>
-                    <input type='button' onClick="" value="Acessar" class="btn" />
+                    
                 </form>
             </div>
         </div>

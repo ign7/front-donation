@@ -116,6 +116,8 @@ function Home() {
     const [isLoading, setIsLoading] = useState(true);
     const [isDoador, setIsDoador] = useState(true);
 
+    const urlimg = require.context('../../img', true);
+
     useEffect(() => {
         if (isLoading) {
             const login = localStorage.getItem('login');
@@ -299,10 +301,11 @@ function Home() {
                             {currentItems.map((donation) => (
 
                                 <div key={donation.id} className="card-donation">
-                                    <div>
-                                        <img className="" src={logoimg} alt="Imagem do Card" />
-                                    </div>
-
+                                    {donation.materiais.map((material, index) => (
+                                        <div>
+                                            <img key={index} className="" src={urlimg(`./${material.imagem}`)} alt={`Imagem do Material ${index + 1}`} />
+                                        </div>
+                                    ))}
                                     <div className="">
                                         <hr />
                                         <div className="titulocard">
@@ -311,7 +314,7 @@ function Home() {
                                         </div>
                                         <div className='conteudo'>
                                             <p className="font-bold text-xl mb-2">
-                                                Postada {donation.dataDoacao}.
+                                                 {donation.dataDoacao}.
                                             </p>
                                             <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2">{donation.status}</span>
                                             <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white">{donation.categoria}</span>
