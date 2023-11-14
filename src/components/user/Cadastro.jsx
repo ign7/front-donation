@@ -24,6 +24,7 @@ function Cadastro() {
     navigate('/');     
     }).catch(error=>{
        console.log(error);
+       alert(error+"/ login ja existe")
     })
 
   } 

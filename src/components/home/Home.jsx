@@ -301,11 +301,15 @@ function Home() {
                             {currentItems.map((donation) => (
 
                                 <div key={donation.id} className="card-donation">
-                                    {donation.materiais.map((material, index) => (
+                                    {donation.materiais && donation.materiais.length > 0 && donation.materiais[0] && (
                                         <div>
-                                            <img key={index} className="" src={urlimg(`./${material.imagem}`)} alt={`Imagem do Material ${index + 1}`} />
+                                            <img
+                                                className=""
+                                                src={urlimg(`./${donation.materiais[0].imagem}`)}
+                                                alt={`Imagem do Material 1`}
+                                            />
                                         </div>
-                                    ))}
+                                    )}
                                     <div className="">
                                         <hr />
                                         <div className="titulocard">
@@ -314,7 +318,7 @@ function Home() {
                                         </div>
                                         <div className='conteudo'>
                                             <p className="font-bold text-xl mb-2">
-                                                 {donation.dataDoacao}.
+                                                {donation.dataDoacao}.
                                             </p>
                                             <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2">{donation.status}</span>
                                             <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white">{donation.categoria}</span>
