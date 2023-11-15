@@ -28,6 +28,7 @@ function Home() {
         console.log(donation);
         setSelectednomeDonation(donation.nome);
         localStorage.setItem('nomeDonationSelecionada', donation.nome);
+        localStorage.setItem('DonationId',donation.id)
         navigate('/donation') // Descomente esta linha se tiver uma função de navegação
     }
 
@@ -127,6 +128,7 @@ function Home() {
                 },
             })
                 .then(response => {
+                    localStorage.setItem('idreceptor',response.data.id);
                     setUserData(response.data); // Armazena os dados do usuário no estado local
                     setIsLoading(false); // Indica que os dados do usuário foram carregados
                     if (response.data.role === 'DOADOR') {

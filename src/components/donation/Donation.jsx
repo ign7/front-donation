@@ -15,6 +15,36 @@ function Donation() {
 
     var nomeDonation = localStorage.getItem('nomeDonationSelecionada');
 
+    const [cadastro, setcadastro] = useState({
+        'dataSolicitacao': '',
+        'observacao': ''
+      });
+
+
+
+      function handle(sol){
+        setcadastro({...cadastro,[sol.target.name]:sol.target.value})
+      }
+      
+        
+      
+
+
+    function solicitar(){
+        const donoid=localStorage.getItem('donoDonationId');
+        const donation_id=localStorage.getItem('DonationId');
+        const receptor_id=localStorage.getItem('idreceptor');
+
+         axios.post(`http://localhost:8080/solicitacoes/realizarsolicitacao/doadorid=${donoid}/receptorid=${receptor_id}/donationid=${donation_id}`,cadastro).then(
+            solicitacao=>{
+                setOpenModal(false);
+                console.log(solicitacao.data);
+            }).catch(error=>{
+                console.log(error);
+                
+             }) 
+        
+    }
 
 
     const [listadonations, setlistadonation] = useState([]);
@@ -36,6 +66,13 @@ function Donation() {
             console.log(error);
             alert('Ocorreu um erro durante o Donation. Por favor, tente novamente.');
         })
+
+        axios.get('http://localhost:8080/donations/pesquisardoacao/getuserbynomeDonation='+nomeDonation).then(
+            user=>{
+                console.log(user.data);
+                localStorage.setItem('donoDonationId',user.data.id);
+            }
+        )
 
     }, [])
 
@@ -177,24 +214,25 @@ function Donation() {
                             <label htmlFor="descricaoSolicitacao" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-4 mb-2">
                                 Data Solicitação
                             </label>
-                            <input                              
+                            <input   
+                                                         
                                 type="date"
                                 id="dataSolicitacao"
-                                name="dataSolicitacao"
+                                name="dataSolicitacao" value={cadastro.dataSolicitacao} onChange={handle}  
                                 className="w-full p-2 border border-gray-300 rounded-md cursor-not-allowed focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600"
                             />
 
-                            <label htmlFor="descricaoSolicitacao" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-4 mb-2">
+                            <label  htmlFor="descricaoSolicitacao" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-4 mb-2">
                                 Descrição
                             </label>
-                            <textarea
+                            <textarea name="observacao" value={cadastro.observacao} onChange={handle}
                                 className="w-full h-32 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-500 dark:bg-gray-700 dark:border-gray-600"
                                 placeholder="Descreva porque voce quer esta doação, a descrição é uma parte muito importante, para o doador saber os motivos reais 
                                 do porque voce esta solicitando estes materiais ..."
                             ></textarea>
                         </div>
                         <div className="flex justify-center gap-4">
-                            <Button color="success" onClick={() => setOpenModal(false)}>
+                            <Button color="success" onClick={() => solicitar()}>
                                 {"Enviar "}
                             </Button>
                             <Button color="gray" onClick={() => setOpenModal(false)}>
