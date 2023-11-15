@@ -117,6 +117,8 @@ function Home() {
     const [isLoading, setIsLoading] = useState(true);
     const [isDoador, setIsDoador] = useState(true);
 
+    const [isReceptor, setIsReceptor] = useState(true);
+
 
     const urlimg = require.context('../../img', true);
 
@@ -134,6 +136,8 @@ function Home() {
                     setIsLoading(false); // Indica que os dados do usuário foram carregados
                     if (response.data.role === 'DOADOR') {
                         setIsDoador(false);
+                    }else{
+                        setIsReceptor(false);
                     }
                 })
                 .catch(error => {
@@ -194,7 +198,7 @@ function Home() {
                                         <div className="flex items-center justify-between">
                                             <p className="mr-2">Minhas Doações</p>
 
-                                            {!isDoador && userData.doacoes.length > 0 ? (
+                                            {!isDoador || !isReceptor && userData.doacoes.length > 0 ? (
                                                 <span className='labelindex rounded-full bg-red-500 text-white text-xs py-1 px-2 transition duration-300 ease-in-out hover:bg-red-600 hover:scale-105'>
                                                     {userData.doacoes.length}
                                                 </span>
@@ -231,7 +235,7 @@ function Home() {
                                         </a>
                                         <div className="flex items-center ">
                                             <p className="mr-2">Solicitaçoes Enviadas</p>
-                                            {!isDoador && userData.solicitacoesEnviadas.length > 0 ? (
+                                            {!isDoador || !isReceptor &&  userData.solicitacoesEnviadas.length > 0 ? (
                                             <span className='rounded-full bg-red-500 text-white text-xs py-1 px-2 transition duration-300 ease-in-out hover:bg-red-600 hover:scale-105'>
                                                 {userData.solicitacoesEnviadas.length}
                                             </span>
