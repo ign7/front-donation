@@ -232,7 +232,7 @@ function Home() {
                 </div>
 
                 <div className='body-home'>
-                    <div className='titulo-homepage'>
+                    <div className='titulo-homepage transition-transform transform hover:scale-95'>
                         <div className='content-educ'>
                             <div className='title-educ'>
                                 <h1 class="text-6xl font-bold">Educação Sustentável System <span class="material-symbols-outlined">
@@ -264,13 +264,13 @@ function Home() {
                     </div>
                     <hr />
                     <div className='corpo'>
-                        <div className='doacoes-titulo'>
+                        <div className='doacoes-titulo transition-transform transform hover:scale-95'>
                             <div className='container-titulo'>
-                                <h1 class="text-4xl font-bold">Doações Disponíveis</h1>
-                                <span
+                                <h1 class="text-4xl font-bold ">Doações Disponíveis</h1>
+                                <span 
                                     type='button'
                                     onClick={() => setIsOpen(!isOpen)}
-                                    className="material-symbols-outlined"
+                                    className="material-symbols-outlined "
                                 >
                                     expand_more
                                 </span>
@@ -278,7 +278,7 @@ function Home() {
                             <div className='container-dropdown'>
                                 <div className='container-drop'>
                                     {isOpen && (
-                                        <ul className='dropdown-list'>
+                                        <ul className='dropdown-list '>
                                             <h1 className='title-drop'>Categoria</h1>
                                             <hr />
                                             {options.map((option) => (
@@ -300,7 +300,7 @@ function Home() {
                         <div className='container-conteudo'>
                             {currentItems.map((donation) => (
 
-                                <div key={donation.id} className="card-donation">
+                                <div key={donation.id} className="card-donation transition-transform transform hover:scale-105">
                                     {donation.materiais && donation.materiais.length > 0 && donation.materiais[0] && (
                                         <div>
                                             <img

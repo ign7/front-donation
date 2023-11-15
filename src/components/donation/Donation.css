@@ -6,6 +6,79 @@
     padding: 40px;
     background-color: #dbdbdb;
 }
+
+.container-conteudo-sol{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-donation{
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card--sol{
+    padding: 16px;
+    width: 80%;
+    border-radius:  5px;
+    background-color: #ffffffe5;  
+    border: 1px solid #ccc;
+    transition: all 0.3s ease; 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+   
+}
+
+.card--material{
+    padding: 16px;
+    width: 50%;
+    border-radius:  5px;
+    background-color: #ffffffe5;  
+    border: 1px solid #ccc;
+    transition: all 0.3s ease; 
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+   
+    margin-right: 24px;
+}
+
+.solicitacao{
+    max-width: 50%;
+}
+
+.card--sol:hover {
+    background-color:#28c074; 
+    border-color: #999; 
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); 
+}
+
+.container-material{
+    display: flex;
+    flex-direction: row;  
+    flex-wrap: wrap;  
+    padding: 24px;
+}
+
+.material{
+    display: flex;
+    flex-direction: column;  
+}
+
+.container-donationView{
+    
+    padding-top: 1.0rem;
+    padding: 40px;
+    background-color: #dbdbdb;
+    display: flex;
+    justify-content: space-around;
+}
+
 .form-container{
     padding-right: 1.2rem;
 }
