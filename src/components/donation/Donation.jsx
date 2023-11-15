@@ -168,8 +168,8 @@ function Donation() {
                 <Modal.Header />
                 <Modal.Body>
                     <div className="text-center">
-                        <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-                        <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                        <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-green-500 dark:text-gray-200" />
+                        <h3 className="mb-5 text-lg font-normal text-green-700 dark:text-gray-400">
                             Sua solicitação será enviada para o doador, apos a confirmação !!
                         </h3>
                         <div className="my-6 mx-4 p-4  dark:bg-gray-800 rounded-lg">
@@ -177,8 +177,7 @@ function Donation() {
                             <label htmlFor="descricaoSolicitacao" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-4 mb-2">
                                 Data Solicitação
                             </label>
-                            <input
-                               
+                            <input                              
                                 type="date"
                                 id="dataSolicitacao"
                                 name="dataSolicitacao"
@@ -189,7 +188,7 @@ function Donation() {
                                 Descrição
                             </label>
                             <textarea
-                                className="w-full h-32 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                                className="w-full h-32 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-500 dark:bg-gray-700 dark:border-gray-600"
                                 placeholder="Descreva porque voce quer esta doação, a descrição é uma parte muito importante, para o doador saber os motivos reais 
                                 do porque voce esta solicitando estes materiais ..."
                             ></textarea>
