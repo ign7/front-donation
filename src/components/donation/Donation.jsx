@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Donation.css';
 
+import { Button, Modal } from 'flowbite-react';
+
+import { HiOutlineExclamationCircle } from 'react-icons/hi';
+
 
 
 
@@ -16,6 +20,9 @@ function Donation() {
     const [listadonations, setlistadonation] = useState([]);
 
     const urlimg = require.context('../../img', true);
+
+    const [openModal, setOpenModal] = useState(false);
+
 
     useEffect(() => {
 
@@ -76,19 +83,23 @@ function Donation() {
                     </div>
 
                     <div className='solicitacao'>
-                        <div className='bg-green-400 rounded flex justify-between transition-transform transform hover:scale-105 hover:bg-green-500'>
-                            <h1 className='text-2xl font-bold  font-serif p-4 pl-6'>Solicite Sua Doação Agora</h1>
-                            <div className="p-4 pl-6  hover:text-green-600 transition-transform transform hover:scale-105 hover:bg-gray-300">
-                                <button className="btn-info" >
-                                    <span class="material-symbols-outlined">
-                                        swipe_up
-                                    </span>
+                        <div className="bg-green-400 rounded flex justify-between transition-transform transform hover:scale-105 hover:bg-green-500">
+                            <h1 className="text-2xl font-bold font-serif p-4 pl-6">Solicite Sua Doação Agora</h1>
+                            <div className="p-4 pl-6 hover:text-green-600 transition-transform transform hover:scale-105 hover:bg-gray-300">
+                                <button
+                                    class="popup-modal"
+                                    data-modal-target="popup-modal"
+                                    data-modal-toggle="popup-modal"
+                                    onClick={() => setOpenModal(true)}
+                                >
+                                    <span className="material-symbols-outlined">swipe_up</span>
                                     <div>
                                         <p>Solicitar</p>
                                     </div>
                                 </button>
                             </div>
                         </div>
+
 
                         <span className='block'>
                             <p className=' transition-transform transform hover:scale-105 '>
@@ -109,7 +120,7 @@ function Donation() {
                 </div>
 
                 <div className='container-material'>
-                    
+
                     <div className='material'>
                         <h1 className='text-2xl font-bold  font-serif p-4 pl-6'>Materias Doação {nomeDonation}</h1>
                         {listadonations.map((donation) => (
@@ -149,6 +160,32 @@ function Donation() {
                 </div>
 
             </div>
+
+            <div >
+
+            </div>
+
+
+            <Modal show={openModal} size="md" onClose={() => setOpenModal(false)} popup>
+                            <Modal.Header />
+                            <Modal.Body>
+                                <div className="text-center">
+                                    <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
+                                    <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                                      Voce tem certeza que deseja Realizar Solicitação Desta Doação?
+                                    </h3>
+                                    <div className="flex justify-center gap-4">
+                                        <Button color="success" onClick={() => setOpenModal(false)}>
+                                            {"Sim , Eu tenho !"}
+                                        </Button>
+                                        <Button color="gray" onClick={() => setOpenModal(false)}>
+                                            Não
+                                        </Button>
+                                    </div>
+                                </div>
+                            </Modal.Body>
+                        </Modal>
+
         </div>
     );
 }
