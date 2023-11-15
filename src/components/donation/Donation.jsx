@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Donation.css';
 
-import { Button, Modal } from 'flowbite-react';
+import { Button, Modal, Datepicker } from 'flowbite-react';
 
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
@@ -172,6 +172,28 @@ function Donation() {
                         <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
                             Sua solicitação será enviada para o doador, apos a confirmação !!
                         </h3>
+                        <div className="my-6 mx-4 p-4  dark:bg-gray-800 rounded-lg">
+
+                            <label htmlFor="descricaoSolicitacao" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-4 mb-2">
+                                Data Solicitação
+                            </label>
+                            <input
+                               
+                                type="date"
+                                id="dataSolicitacao"
+                                name="dataSolicitacao"
+                                className="w-full p-2 border border-gray-300 rounded-md cursor-not-allowed focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                            />
+
+                            <label htmlFor="descricaoSolicitacao" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-4 mb-2">
+                                Descrição
+                            </label>
+                            <textarea
+                                className="w-full h-32 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                                placeholder="Descreva porque voce quer esta doação, a descrição é uma parte muito importante, para o doador saber os motivos reais 
+                                do porque voce esta solicitando estes materiais ..."
+                            ></textarea>
+                        </div>
                         <div className="flex justify-center gap-4">
                             <Button color="success" onClick={() => setOpenModal(false)}>
                                 {"Enviar "}
@@ -181,6 +203,7 @@ function Donation() {
                             </Button>
                         </div>
                     </div>
+
                 </Modal.Body>
             </Modal>
 
