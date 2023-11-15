@@ -28,7 +28,7 @@ function Home() {
         console.log(donation);
         setSelectednomeDonation(donation.nome);
         localStorage.setItem('nomeDonationSelecionada', donation.nome);
-        localStorage.setItem('DonationId',donation.id)
+        localStorage.setItem('DonationId', donation.id)
         navigate('/donation') // Descomente esta linha se tiver uma função de navegação
     }
 
@@ -117,6 +117,7 @@ function Home() {
     const [isLoading, setIsLoading] = useState(true);
     const [isDoador, setIsDoador] = useState(true);
 
+
     const urlimg = require.context('../../img', true);
 
     useEffect(() => {
@@ -128,7 +129,7 @@ function Home() {
                 },
             })
                 .then(response => {
-                    localStorage.setItem('idreceptor',response.data.id);
+                    localStorage.setItem('idreceptor', response.data.id);
                     setUserData(response.data); // Armazena os dados do usuário no estado local
                     setIsLoading(false); // Indica que os dados do usuário foram carregados
                     if (response.data.role === 'DOADOR') {
@@ -167,7 +168,7 @@ function Home() {
                         <div class="" id='container-nav-actions'>
                             <ul>
                                 <div className='label-navs'>
-                                    {isDoador ? (
+                                    {!isDoador ? (
                                         <p></p>
                                     ) : (
                                         <li class="mb-2">
@@ -182,6 +183,7 @@ function Home() {
 
                                 </div>
 
+
                                 <div className='label-navs'>
                                     <li class="mb-2">
                                         <a href="#" class="hover:text-white">
@@ -189,18 +191,15 @@ function Home() {
                                                 volunteer_activism
                                             </span>
                                         </a>
-                                        <p>Minhas Doaçoes</p>
-                                    </li>
-                                </div>
+                                        <div className="flex items-center justify-between">
+                                            <p className="mr-2">Minhas Doações</p>
 
-                                <div className='label-navs'>
-                                    <li class="mb-2">
-                                        <a href="#" class="hover:text-white">
-                                            <span class="material-symbols-outlined">
-                                                mark_email_read
-                                            </span>
-                                        </a>
-                                        <p>Solicitaçoes Recebidas</p>
+                                            {!isDoador && userData.doacoes.length > 0 ? (
+                                                <span className='labelindex rounded-full bg-red-500 text-white text-xs py-1 px-2 transition duration-300 ease-in-out hover:bg-red-600 hover:scale-105'>
+                                                    {userData.doacoes.length}
+                                                </span>
+                                            ) : null}
+                                        </div>
                                     </li>
                                 </div>
 
@@ -211,9 +210,37 @@ function Home() {
                                                 schedule_send
                                             </span>
                                         </a>
-                                        <p>Solicitaçoes Enviadas</p>
+                                        <div className="flex items-center ">
+                                            <p className="mr-2">Solicitaçoes Recebidas</p>
+                                            {!isDoador && userData.solicitacoesRecebidas.length > 0 ? (
+                                            <span className='rounded-full bg-red-500 text-white text-xs py-1 px-2 transition duration-300 ease-in-out hover:bg-red-600 hover:scale-105'>
+                                                {userData.solicitacoesRecebidas.length}
+                                            </span>
+                                             ) : null}
+                                        </div>
+
                                     </li>
                                 </div>
+
+                                <div className='label-navs'>
+                                    <li class="mb-2">
+                                        <a href="#" class="hover:text-white">
+                                            <span class="material-symbols-outlined">
+                                                mark_email_read
+                                            </span>
+                                        </a>
+                                        <div className="flex items-center ">
+                                            <p className="mr-2">Solicitaçoes Enviadas</p>
+                                            {!isDoador && userData.solicitacoesEnviadas.length > 0 ? (
+                                            <span className='rounded-full bg-red-500 text-white text-xs py-1 px-2 transition duration-300 ease-in-out hover:bg-red-600 hover:scale-105'>
+                                                {userData.solicitacoesEnviadas.length}
+                                            </span>
+                                            ) : null}
+                                        </div>
+                                    </li>
+                                </div>
+
+
 
 
                                 <div className='label-navs'>
@@ -269,7 +296,7 @@ function Home() {
                         <div className='doacoes-titulo transition-transform transform hover:scale-95'>
                             <div className='container-titulo'>
                                 <h1 class="text-4xl font-bold ">Doações Disponíveis</h1>
-                                <span 
+                                <span
                                     type='button'
                                     onClick={() => setIsOpen(!isOpen)}
                                     className="material-symbols-outlined "
