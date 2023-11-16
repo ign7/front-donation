@@ -33,7 +33,7 @@ function Donation() {
     function solicitar(){
         const donoid=localStorage.getItem('donoDonationId');
         const donation_id=localStorage.getItem('DonationId');
-        const receptor_id=localStorage.getItem('idreceptor');
+        const receptor_id=localStorage.getItem('usuarioauteticado');
 
          axios.post(`http://localhost:8080/solicitacoes/realizarsolicitacao/doadorid=${donoid}/receptorid=${receptor_id}/donationid=${donation_id}`,cadastro).then(
             solicitacao=>{
@@ -41,7 +41,7 @@ function Donation() {
                 console.log(solicitacao.data);
             }).catch(error=>{
                 console.log(error);
-                
+                alert(error.response.data);
              }) 
         
     }

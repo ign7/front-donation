@@ -60,6 +60,7 @@
 
 
 .label-navs{
+    display: flex;
     padding: 0.15rem;
     transition: all 0.3s ease; 
 }

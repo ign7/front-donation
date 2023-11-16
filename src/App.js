@@ -8,6 +8,9 @@ import Donation from './components/donation/Donation';
 import CadastrarDonation from './components/donation/CadastrarDonation';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import logoimg from './img/LogoDonation.jpeg'
+import MyDonation from './components/donation/MyDonation'
+import SolicitacaoRecebida from './components/solicitacoes/SolicitacaoRecebida';
+import SolicitacaoEnviada from './components/solicitacoes/SolicitacoesEnviadas';
 
 
 function App() {
@@ -44,6 +47,9 @@ function App() {
           <Route path="/home" element={<Home/>} />
           <Route path="/teladoacao" element={<CadastrarDonation/>}/>
           <Route path="/donation" element={<Donation/>}/>
+          <Route path="/minhasdoacoes" element={<MyDonation/>}/>
+          <Route path="/solicitacoesRecebedidas" element={<SolicitacaoRecebida/>}/>
+          <Route path="/solicitacoesEnviadas" element={<SolicitacaoEnviada/>}/>
         </Routes>
       </Router>
     </div>
