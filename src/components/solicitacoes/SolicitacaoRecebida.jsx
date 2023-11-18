@@ -15,12 +15,14 @@ function SolicitacaoRecebida() {
   const navigate = useNavigate();
 
   const [listaSolicitacao, setlistaSolicitacao] = useState([]);
+  const [listaSolicitacaoRecebida, setlistaSolicitacaoRecebida] = useState([]);
 
   const [userData, setUserData] = useState(null);
 
   const [solicitacaoData, setsolicitacao] = useState(null);
+  const [isdoacao, setisdoacao] = useState(false);
 
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(true);
 
   useEffect(() => {
 
@@ -31,8 +33,14 @@ function SolicitacaoRecebida() {
       },
     })
       .then(response => {
-        console.log(response.data);
-        setlistaSolicitacao(response.data.doacoes);
+        console.log(response.data.doacoes.length);
+        if (response.data.doacoes.length >= 1) {
+          setlistaSolicitacao(response.data.doacoes);
+          setisdoacao(true);
+        } else {
+          setisdoacao(false);
+          setlistaSolicitacaoRecebida(response.data.solicitacoesRecebidas);
+        }
         setUserData(response.data); // Armazena os dados do usuário no estado local
 
       })
@@ -62,8 +70,8 @@ function SolicitacaoRecebida() {
     )
       .then(msg => {
         alert(msg.data);
-        localStorage.setItem('id_usuario_vencedor',receptorid);
-        localStorage.setItem('solicitacaoaceita',msg.data);
+        localStorage.setItem('id_usuario_vencedor', receptorid);
+        localStorage.setItem('solicitacaoaceita', msg.data);
         setOpenModal(false);
       })
       .catch(error => {
@@ -117,9 +125,7 @@ function SolicitacaoRecebida() {
   return (
     <div className="CadastrarDonation bg-green-300 min-h-screen flex justify-center items-center">
       <div className="bg-white p-8 shadow-md rounded-lg w-full max-w-2xl">
-
         <div className="container-donationView">
-
           <div className="container-conteudo-sol">
 
             <div className="title-donation text-center">
@@ -127,15 +133,49 @@ function SolicitacaoRecebida() {
               <p className="text-gray-600">Solicitações Recebidas de suas Doações</p>
             </div>
 
-            {listaSolicitacao.map((doacao) => (
-              <div key={doacao.id} className="card--sol transition-transform transform hover:scale-95 bg-gray-200 p-4 mb-4 rounded-md">
-                <div className="">
-                  <div className="border-b mb-4 pb-2">
-                    <h1 className="font-bold text-xl mb-2">Doação: {doacao.nome}</h1>
+
+            <div>
+              {isdoacao ? (
+                listaSolicitacao.map((doacao) => (
+                  <div key={doacao.id} className="card--sol transition-transform transform hover:scale-95 bg-gray-200 p-4 mb-4 rounded-md flex flex-col justify-center items-center">
+                    <div className="border-b mb-4 pb-2">
+                      <h1 className="font-bold text-xl mb-2">Doação: {doacao.nome}</h1>
+                    </div>
+
+                    {doacao.donationSolicitadas && doacao.donationSolicitadas.map((solicitacao) => (
+                      <div key={solicitacao.id} className="conteudo text-center">
+                        <p className="font-bold text-xl mb-2">Data: {solicitacao.dataSolicitacao}</p>
+                        <div className="flex mb-2 justify-center">
+                          <span className="inline-block bg-yellow-300 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2">{solicitacao.role}</span>
+                        </div>
+                        <div className="mb-4">
+                          <label className="font-semibold">Descrição:</label>
+                          <p className="text-gray-700">{solicitacao.observacao}</p>
+                        </div>
+
+                        <div className="flex justify-center items-center mt-4">
+                          <button disabled className="btn-info">
+                            <span className="material-symbols-outlined">settings</span>
+                            <div>
+                              <p>Configurações</p>
+                            </div>
+                          </button>
+                          <button onClick={() => telaconfirmação(solicitacao.id)} className="bg-green-500 text-white py-2 px-4 rounded-md ml-2">Aceitar</button>
+                          <button disabled className="bg-gray-500 text-white py-2 px-4 rounded-md ml-2">Disabled</button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
 
-                  {doacao.donationSolicitadas && doacao.donationSolicitadas.map((solicitacao) => (
-                    <div key={solicitacao.id}>
+                ))
+              ) : (
+                listaSolicitacaoRecebida.map((solicitacao) => (
+                  <div key={solicitacao.id} className="card--sol transition-transform transform hover:scale-95 bg-gray-200 p-4 mb-4 rounded-md">
+                    <div className="">
+                      <div className="border-b mb-4 pb-2">
+                        <h1 className="font-bold text-xl mb-2">Solicitação Recebida: {solicitacao.id}</h1>
+                      </div>
+
                       <div className="conteudo">
                         <p className="font-bold text-xl mb-2">Data: {solicitacao.dataSolicitacao}</p>
                         <div className="flex mb-2">
@@ -154,14 +194,16 @@ function SolicitacaoRecebida() {
                             <p>Configurações</p>
                           </div>
                         </button>
-                        <button onClick={() => telaconfirmação(solicitacao.id)} className="bg-green-500 text-white py-2 px-4 rounded-md ml-2">Aceitar</button>
-                        <button disabled className="bg-gray-500 text-white py-2 px-4 rounded-md ml-2">Disabled</button>
+                        {/* Adicione mais lógica se necessário para as ações relacionadas à solicitação recebida */}
                       </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+                  </div>
+                ))
+              )}
+            </div>
+
+
+
           </div>
 
         </div>

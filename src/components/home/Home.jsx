@@ -86,7 +86,7 @@ function Home() {
     };
 
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5; // Change this value according to your preference
+    const itemsPerPage = 4; // Change this value according to your preference
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -272,7 +272,7 @@ function Home() {
                         <div className='content-educ'>
                             <div className='title-educ'>
                                 <h1 className="text-6xl font-bold ">
-                                    Educação Sustentável System{" "}
+                                    DonationMaterais System {" "}
                                     <span className="material-symbols-outlined text-green-500">park</span>
                                 </h1>
 

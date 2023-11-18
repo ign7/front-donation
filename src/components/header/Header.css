@@ -1,9 +1,8 @@
-header {
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    background: #fff;
+header {   
+    background: #c02727;
     width: 100%;
-   
     top: 0;
+    
    }
    
    header, nav ul {
