@@ -22,7 +22,7 @@ function SolicitacaoRecebida() {
   const [solicitacaoData, setsolicitacao] = useState(null);
   const [isdoacao, setisdoacao] = useState(false);
 
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
 
