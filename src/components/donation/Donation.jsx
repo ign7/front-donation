@@ -7,43 +7,50 @@ import { Button, Modal, Datepicker } from 'flowbite-react';
 
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
-
+import { HiEye, HiInformationCircle } from 'react-icons/hi';
+import { Alert } from 'flowbite-react';
 
 
 function Donation() {
     const navigate = useNavigate();
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const [isequals, setisequals] = useState(false);
 
     var nomeDonation = localStorage.getItem('nomeDonationSelecionada');
 
     const [cadastro, setcadastro] = useState({
         'dataSolicitacao': '',
         'observacao': ''
-      });
+    });
 
 
 
-      function handle(sol){
-        setcadastro({...cadastro,[sol.target.name]:sol.target.value})
-      }
-      
-        
-      
+    function handle(sol) {
+        setcadastro({ ...cadastro, [sol.target.name]: sol.target.value })
+    }
 
 
-    function solicitar(){
-        const donoid=localStorage.getItem('donoDonationId');
-        const donation_id=localStorage.getItem('DonationId');
-        const receptor_id=localStorage.getItem('usuarioauteticado');
 
-         axios.post(`http://localhost:8080/solicitacoes/realizarsolicitacao/doadorid=${donoid}/receptorid=${receptor_id}/donationid=${donation_id}`,cadastro).then(
-            solicitacao=>{
+
+
+    function solicitar() {
+        const donoid = localStorage.getItem('donoDonationId');
+        const donation_id = localStorage.getItem('DonationId');
+        const receptor_id = localStorage.getItem('usuarioauteticado');
+
+        axios.post(`http://localhost:8080/solicitacoes/realizarsolicitacao/doadorid=${donoid}/receptorid=${receptor_id}/donationid=${donation_id}`, cadastro).then(
+            solicitacao => {
                 setOpenModal(false);
                 console.log(solicitacao.data);
-            }).catch(error=>{
+                setIsLoading(true)
+            }).catch(error => {
                 console.log(error);
-                alert(error.response.data);
-             }) 
-        
+                setisequals(true);
+                //alert(error.response.data);
+            })
+
     }
 
 
@@ -67,10 +74,10 @@ function Donation() {
             alert('Ocorreu um erro durante o Donation. Por favor, tente novamente.');
         })
 
-        axios.get('http://localhost:8080/donations/pesquisardoacao/getuserbynomeDonation='+nomeDonation).then(
-            user=>{
+        axios.get('http://localhost:8080/donations/pesquisardoacao/getuserbynomeDonation=' + nomeDonation).then(
+            user => {
                 console.log(user.data);
-                localStorage.setItem('donoDonationId',user.data.id);
+                localStorage.setItem('donoDonationId', user.data.id);
             }
         )
 
@@ -80,6 +87,27 @@ function Donation() {
     return (
         <div className="CadastrarDonation">
             <div class="Donationpage">
+                {isLoading && (
+                    <Alert
+                        color="success"
+                        icon={HiInformationCircle}
+                        onDismiss={() => alert('Alert dismissed!')}
+                        rounded
+                    >
+                        <span className="font-medium">Parabens !</span>Sua Solicitação foi enviada e sera  analizada, verifique suas doaçoes caso seja selecionado !!
+                    </Alert>
+                )}
+
+                {isequals && (
+                    <Alert
+                        color="failure"
+                        icon={HiInformationCircle}
+                        onDismiss={() => alert('Alert dismissed!')}
+                        rounded
+                    >
+                        <span className="font-medium">Failure !</span> Voce nao tem Permissão Para realizar esta Solicitação !!
+                    </Alert>
+                )}
                 <div className='container-donationView '>
 
                     <div className='container-conteudo-sol'>
@@ -214,15 +242,15 @@ function Donation() {
                             <label htmlFor="descricaoSolicitacao" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-4 mb-2">
                                 Data Solicitação
                             </label>
-                            <input   
-                                                         
+                            <input
+
                                 type="date"
                                 id="dataSolicitacao"
-                                name="dataSolicitacao" value={cadastro.dataSolicitacao} onChange={handle}  
+                                name="dataSolicitacao" value={cadastro.dataSolicitacao} onChange={handle}
                                 className="w-full p-2 border border-gray-300 rounded-md cursor-not-allowed focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600"
                             />
 
-                            <label  htmlFor="descricaoSolicitacao" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-4 mb-2">
+                            <label htmlFor="descricaoSolicitacao" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-4 mb-2">
                                 Descrição
                             </label>
                             <textarea name="observacao" value={cadastro.observacao} onChange={handle}

@@ -8,6 +8,9 @@ import './Home.css';
 import '../../../src/index.css'
 
 
+
+
+import { HiEye, HiInformationCircle } from 'react-icons/hi';
 import { Alert } from 'flowbite-react';
 
 
@@ -41,7 +44,8 @@ function Home() {
             }).then(data => {
                 setlistadonation(data.data);
             }).catch(error => {
-                alert('NÃO AUTORIZADO.');
+                
+                setIsLoadingDonation(true)
                 console.log(error);
             });
         }
@@ -115,6 +119,7 @@ function Home() {
 
     const [userData, setUserData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [IsLoadingDonation, setIsLoadingDonation] = useState(false);
     const [isDoador, setIsDoador] = useState(true);
 
     const [isReceptor, setIsReceptor] = useState(true);
@@ -142,9 +147,9 @@ function Home() {
                     }
                 })
                 .catch(error => {
-                    alert('NÃO AUTORIZADO.');
+                    //alert('NÃO AUTORIZADO.');
                     console.log(error);
-                    setIsLoading(false); // Indica que ocorreu um erro ao carregar os dados do usuário
+                    setIsLoading(true); // Indica que ocorreu um erro ao carregar os dados do usuário
                 });
         }
     }, [isLoading, isDoador]);
@@ -268,6 +273,16 @@ function Home() {
                 </div>
 
                 <div className='body-home'>
+                {isLoading && (
+                        <Alert
+                            color="failure"
+                            icon={HiInformationCircle}
+                            onDismiss={() => alert('Alert dismissed!')}
+                            rounded
+                        >
+                            <span className="font-medium">Failure !</span> Não Auteticado, carregando dados do Usuario.... !!
+                        </Alert>
+                    )}
                     <div className='titulo-homepage transition-transform transform hover:scale-95'>
                         <div className='content-educ'>
                             <div className='title-educ'>
@@ -313,6 +328,17 @@ function Home() {
                                     expand_more
                                 </span>
                             </div>
+                            {IsLoadingDonation && (
+                        <Alert
+                            color="failure"
+                            icon={HiInformationCircle}
+                            onDismiss={() => alert('Alert dismissed!')}
+                            rounded
+                        >
+                            <span className="font-medium">Failure !</span> Não Esta Autorizado a realizar esta ação .... !!
+                        </Alert>
+                    )}
+                            
                             <div className='container-dropdown'>
                                 <div className='container-drop'>
                                     {isOpen && (
