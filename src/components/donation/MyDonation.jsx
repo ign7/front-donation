@@ -21,6 +21,10 @@ function MyDonation() {
     const [isReceptor, setIsReceptor] = useState(false);
     const [msgrecebidaData, setmsgrecebidaData] = useState(null);
 
+    function closeAlert(){
+        setIsReceptor(false);
+    }
+
 
     useEffect(() => {
         const login = localStorage.getItem('login');
@@ -56,16 +60,7 @@ function MyDonation() {
     return (
 
         <div className="Cadastrar MyDonation">
-            {isReceptor && (
-                        <Alert
-                            color="warning"
-                            icon={HiInformationCircle}
-                            onDismiss={() => alert('Alert dismissed!')}
-                            rounded
-                        >
-                            <span className="font-medium">Parabens !</span> {msgrecebidaData}
-                        </Alert>
-                    )}
+
             <div class=" MyDonationpage">
                 <div className='container- MyDonationView '>
 
@@ -76,7 +71,21 @@ function MyDonation() {
                         </div>
 
                         {listaMyDonations.map((MyDonation) => (
-                            <div key={MyDonation.id} className="card--sol transition-transform transform hover:scale-105">
+
+                            <div key={MyDonation.id} className="card--soldonation transition-transform transform hover:scale-105">
+                                <div className='p-4'>
+                                {isReceptor && (
+                                    <Alert
+                                        color="info"
+                                        icon={HiInformationCircle}
+                                        onDismiss={() => closeAlert()}
+                                        rounded
+                                    >
+                                        <span className="font-medium">Parabens !</span> {msgrecebidaData}
+                                    </Alert>
+                                )}
+                                </div>
+                                
                                 <div className="">
                                     <hr />
                                     <div className="titulocard">

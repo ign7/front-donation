@@ -34,6 +34,19 @@
    
 }
 
+.card--soldonation{
+    padding: 16px;
+    width: 80%;
+    border-radius:  5px;
+    background-color: #ffffffe5;  
+    border: 1px solid #ccc;
+    transition: all 0.3s ease; 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+   
+}
+
 .card--material{
     padding: 16px;
     width: 50%;
@@ -51,6 +64,14 @@
 .solicitacao{
     max-width: 50%;
 }
+
+
+.card--soldonation:hover {
+    background-color:#287cc0; 
+    border-color: #999; 
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); 
+}
+
 
 .card--sol:hover {
     background-color:#28c074; 

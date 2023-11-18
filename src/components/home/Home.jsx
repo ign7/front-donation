@@ -14,6 +14,9 @@ import { HiEye, HiInformationCircle } from 'react-icons/hi';
 import { Alert } from 'flowbite-react';
 
 
+import { Banner, Button, Label, TextInput } from 'flowbite-react';
+import { HiX } from 'react-icons/hi';
+
 function Home() {
 
     window.addEventListener('beforeunload', () => {
@@ -44,12 +47,14 @@ function Home() {
             }).then(data => {
                 setlistadonation(data.data);
             }).catch(error => {
-                
+
                 setIsLoadingDonation(true)
                 console.log(error);
             });
         }
     }
+
+
 
     function getDonationByCategoria(option) {
         if (option !== 'TODOS') {
@@ -118,12 +123,18 @@ function Home() {
     }
 
     const [userData, setUserData] = useState(null);
+    const [DonationData, setDonationData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [ispesquisa, setIspesquisa] = useState(null);
     const [IsLoadingDonation, setIsLoadingDonation] = useState(false);
     const [isDoador, setIsDoador] = useState(true);
 
     const [isReceptor, setIsReceptor] = useState(true);
 
+
+    function closeAlert() {
+        setIspesquisa(false);
+    }
 
     const urlimg = require.context('../../img', true);
 
@@ -153,6 +164,36 @@ function Home() {
                 });
         }
     }, [isLoading, isDoador]);
+
+
+    const [pesquisa, setPesquisa] = useState('');
+
+    const handleInputChange = (event) => {
+        setPesquisa(event.target.value);
+    };
+
+    const pesquisarpornome = () => {
+        console.log('Valor da pesquisa:', pesquisa);
+        axios.get('http://localhost:8080/donations/pesquisardoacao/nomedoacao=' + pesquisa, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('tokenjwt')}`,
+            },
+        }).then(response => {
+            setIspesquisa(true);
+            console.log(response.data)
+            setDonationData(response.data)
+        }).catch(error => {
+            console.log(error);
+            setIspesquisa(false);
+            alert('Ocorreu um erro durante o Donation. Por favor, tente novamente.');
+        })
+    };
+
+    function closeAlert() {
+        setIspesquisa(false);
+        setIsLoading(false);
+        setIsLoadingDonation(false);
+    }
 
 
     return (
@@ -202,7 +243,7 @@ function Home() {
                                                 </span>
                                             </Link>
                                             <div className="flex items-center justify-between">
-                                               <p className="mr-2">Minhas Doações</p>
+                                                <p className="mr-2">Minhas Doações</p>
                                                 <span className='labelindex rounded-full bg-red-500 text-white text-xs py-1 px-2 transition duration-300 ease-in-out hover:bg-red-600 hover:scale-105'>
                                                     {userData.doacoes.length}
                                                 </span>
@@ -212,9 +253,9 @@ function Home() {
                                 </div>
 
                                 <div className='label-navs'>
-                                <Link to="/solicitacoesRecebedidas" class="hover:text-green-500 ">
-                                    {!isDoador && userData.solicitacoesRecebidas.length > 0 ? (                                      
-                                            <li class="mb-2">                                              
+                                    <Link to="/solicitacoesRecebedidas" class="hover:text-green-500 ">
+                                        {!isDoador && userData.solicitacoesRecebidas.length > 0 ? (
+                                            <li class="mb-2">
                                                 <span class="material-symbols-outlined">
                                                     schedule_send
                                                 </span>
@@ -225,30 +266,30 @@ function Home() {
                                                         {userData.solicitacoesRecebidas.length}
                                                     </span>
                                                 </div>
-                                            </li>                                        
-                                    ) : null}
+                                            </li>
+                                        ) : null}
                                     </Link>
                                 </div>
 
                                 <div className='label-navs'>
-                                <Link to="/solicitacoesEnviadas" class="hover:text-green-500 ">
-                                {!isDoador || !isReceptor && userData.solicitacoesEnviadas.length > 0 ? (
-                                    <li class="mb-2">
-                                        <a href="#" class="hover:text-white">
-                                            <span class="material-symbols-outlined">
-                                                mark_email_read
-                                            </span>
-                                        </a>
-                                        <div className="flex items-center ">
-                                            <p className="mr-2">Solicitaçoes Enviadas</p>
-                                            
-                                                <span className='rounded-full bg-red-500 text-white text-xs py-1 px-2 transition duration-300 ease-in-out hover:bg-red-600 hover:scale-105'>
-                                                    {userData.solicitacoesEnviadas.length}
-                                                </span>
-                                            
-                                        </div>
-                                    </li>
-                                    ) : null}
+                                    <Link to="/solicitacoesEnviadas" class="hover:text-green-500 ">
+                                        {!isDoador || !isReceptor && userData.solicitacoesEnviadas.length > 0 ? (
+                                            <li class="mb-2">
+                                                <a href="#" class="hover:text-white">
+                                                    <span class="material-symbols-outlined">
+                                                        mark_email_read
+                                                    </span>
+                                                </a>
+                                                <div className="flex items-center ">
+                                                    <p className="mr-2">Solicitaçoes Enviadas</p>
+
+                                                    <span className='rounded-full bg-red-500 text-white text-xs py-1 px-2 transition duration-300 ease-in-out hover:bg-red-600 hover:scale-105'>
+                                                        {userData.solicitacoesEnviadas.length}
+                                                    </span>
+
+                                                </div>
+                                            </li>
+                                        ) : null}
                                     </Link>
                                 </div>
 
@@ -273,14 +314,25 @@ function Home() {
                 </div>
 
                 <div className='body-home'>
-                {isLoading && (
+                    {isLoading && (
                         <Alert
                             color="failure"
                             icon={HiInformationCircle}
-                            onDismiss={() => alert('Alert dismissed!')}
+                            onDismiss={() => closeAlert()}
                             rounded
                         >
                             <span className="font-medium">Failure !</span> Não Auteticado, carregando dados do Usuario.... !!
+                        </Alert>
+                    )}
+
+                    {ispesquisa && (
+                        <Alert
+                            color="success"
+                            icon={HiInformationCircle}
+                            onDismiss={() => closeAlert()}
+                            rounded
+                        >
+                            <span className="font-medium">Sucesso ! </span>Item Encontrado... !!
                         </Alert>
                     )}
                     <div className='titulo-homepage transition-transform transform hover:scale-95'>
@@ -304,13 +356,19 @@ function Home() {
                         </div>
 
                         <div className='barrapesquisa'>
-                            <div class="divbarra">
-                                <input type="text" id="search-input" placeholder="Pesquisar..." class="" />
+                            <div className="flex items-center border rounded-md overflow-hidden">
+                                <input
+                                    type="text"
+                                    id="search-input"
+                                    name="pesquisa"
+                                    value={pesquisa}
+                                    placeholder="Pesquisar..."
+                                    onChange={handleInputChange}
+                                    className="px-4 py-2 w-64 focus:outline-none"
+                                />
 
-                                <button id='btn-pesquisa' class="">
-                                    <span class="material-symbols-outlined">
-                                        search
-                                    </span>
+                                <button onClick={pesquisarpornome} id="btn-pesquisa" className="bg-green-500 text-white px-4 py-2">
+                                    <span className="material-symbols-outlined">search</span>
                                 </button>
                             </div>
                         </div>
@@ -329,16 +387,16 @@ function Home() {
                                 </span>
                             </div>
                             {IsLoadingDonation && (
-                        <Alert
-                            color="failure"
-                            icon={HiInformationCircle}
-                            onDismiss={() => alert('Alert dismissed!')}
-                            rounded
-                        >
-                            <span className="font-medium">Failure !</span> Não Esta Autorizado a realizar esta ação .... !!
-                        </Alert>
-                    )}
-                            
+                                <Alert
+                                    color="failure"
+                                    icon={HiInformationCircle}
+                                    onDismiss={() => closeAlert()}
+                                    rounded
+                                >
+                                    <span className="font-medium">Failure !</span> Não Esta Autorizado a realizar esta ação .... !!
+                                </Alert>
+                            )}
+
                             <div className='container-dropdown'>
                                 <div className='container-drop'>
                                     {isOpen && (
@@ -362,8 +420,48 @@ function Home() {
                         </div>
 
                         <div className='container-conteudo'>
-                            {currentItems.map((donation) => (
+                            {DonationData && ispesquisa ? (
+                                <div>
+                                    {DonationData.map((item, index) => (
+                                        <div key={index} className="card-donationsearch transition-transform transform hover:scale-105">
+                                            <div>
+                                                <img
+                                                    className=""
+                                                    src={logoimg}
+                                                    alt={`Imagem do Material 1`}
+                                                />
+                                            </div>
+                                            <div>
+                                                <hr />
+                                                <div className="titulocard">
+                                                    <h1 className="font-bold text-xl mb-2">{item.nome}</h1>
+                                                    <hr />
+                                                </div>
+                                                <div className='conteudo'>
+                                                    <p className="font-bold text-xl mb-2">
+                                                        {item.dataDoacao}.
+                                                    </p>
+                                                    <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2">{item.status}</span>
+                                                    <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white">{item.categoria}</span>
+                                                </div>
+                                            </div>
+                                            <div className="div-btn">
+                                                <button className="btn-info" onClick={() => infoDonationRoute(item)}>
+                                                    <span className="material-symbols-outlined">
+                                                        visibility
+                                                    </span>
+                                                    <div>
+                                                        <p> Ver Informações</p>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : null}
 
+
+                            {currentItems.map((donation) => (
                                 <div key={donation.id} className="card-donation transition-transform transform hover:scale-105">
                                     {donation.materiais && donation.materiais.length > 0 && donation.materiais[0] && (
                                         <div>

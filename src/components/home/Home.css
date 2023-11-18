@@ -184,6 +184,23 @@
 }
 
 
+
+.card-donationsearch{
+    padding: 16px;
+    width: 55%;
+    border-radius:  5px;
+    background-color: #ffffffe5;  
+    border: 1px solid #ccc;
+    transition: all 0.3s ease; 
+    margin-bottom: 48px; 
+    margin-right: 24px;
+}
+
+.card-donationsearch:hover {
+    background-color:#28c074; 
+    border-color: #999; 
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); 
+}
 .card-donation{
     padding: 16px;
     width: 21%;
