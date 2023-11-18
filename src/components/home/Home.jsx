@@ -8,7 +8,7 @@ import './Home.css';
 import '../../../src/index.css'
 
 
-
+import { Alert } from 'flowbite-react';
 
 
 function Home() {
